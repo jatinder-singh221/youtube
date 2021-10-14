@@ -33,7 +33,6 @@ def phone_validation(value):
 def dob_validation(value):
     actual_age = (date.today() - value ).days / 365
     if round(actual_age) >= 12 and round(actual_age <= 110):
-        print('hi')
         return actual_age
 
     else:

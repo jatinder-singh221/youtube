@@ -7,7 +7,7 @@ class user_extended(models.Model):
     def get_user_name(instance, filename):
         return f'{instance.user.id}/{filename}' 
 
-    user = models.OneToOneField(User, on_delete = models.CASCADE, related_name = '%(app_label)s_%(class)s_realted', related_query_name = '%(app_label)s_%(class)ss')
+    user = models.OneToOneField(User, on_delete = models.CASCADE, related_name = 'userextended_related', related_query_name = 'userextended_query')
     user_profile = models.ImageField(upload_to = get_user_name, validators = [image_validation])
     date_of_birth = models.DateField(null = True, validators = [dob_validation])
     address = models.CharField(max_length = 225,validators = [charinput_validation])
