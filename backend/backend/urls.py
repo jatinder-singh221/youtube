@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from decouple import config
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(config('ADMIN_URL'), admin.site.urls),
 ]
