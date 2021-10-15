@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'userextended.apps.UserextendedConfig',
+    'access.apps.AccessConfig',
 ]
 
 MIDDLEWARE = [
