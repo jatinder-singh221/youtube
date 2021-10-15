@@ -14,22 +14,45 @@ class user_login(APIView):
         posted_data = login_serializers(data = request.data)
         
         if posted_data.is_valid():
-            username = posted_data.validated_data.get('username')
-            password = posted_data.validated_data.get('password')
-            check_user = authenticate(username, password)
+            get_username = posted_data.validated_data.get('username')
+            get_password = posted_data.validated_data.get('password')
+            check_user = authenticate(username = get_username, password = get_password)
 
             if check_user is not None:
-                
+
                 if check_user.is_active:
                     login(request, check_user)
-                    return Response(status = status.HTTP_100_CONTINUE)
-
-                else:
-                    return Response({"Error":"You are not allowed to Login"})
+                    return Response(status = status.HTTP_202_ACCEPTED)
 
             else:
-                return Response(check_user.error)
+
+                return Response({'Error':"Invalid username or password"})
 
         else:
-            return Response(posted_data.error)
+            return Response(posted_data.errors)
+            
+
+@method_decorator(csrf_protect, name = 'dispatch')
+class user_register(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        posted_data = regisation_serializer(data = request.data)
+
+        if posted_data.is_valid():
+            posted_data.save()
+            return Response(status = status.HTTP_201_CREATED)
+
+        else:
+            return Response(posted_data.errors)
+
+class user_logout(APIView):
+    
+    def get(self, request, *args, **kwargs):
+
+        if request.user.is_authenticated:
+            logout(request)
+
+        return Response(status = status.HTTP_100_CONTINUE)
+
 
