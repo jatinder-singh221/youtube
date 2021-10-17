@@ -5,5 +5,6 @@ from decouple import config
 urlpatterns = [
     path(config('ADMIN_URL'), admin.site.urls),
     path('aboutuser/',include('userextended.urls')),
-    path('',include('access.urls'))
+    path('',include('access.urls')),
+    path('ads',include('ads.urls')),
 ]

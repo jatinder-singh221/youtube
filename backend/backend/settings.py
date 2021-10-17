@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'userextended.apps.UserextendedConfig',
     'access.apps.AccessConfig',
+    'ads.apps.AdsConfig',
 ]
 
 MIDDLEWARE = [
@@ -110,20 +111,14 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Restframeworksettings
+
 REST_FRAMEWORK = {
-    # 'DEFAULT_RENDERER_CLASSES': [
-    #     'rest_framework.renderers.JSONRenderer',
-    #     'rest_framework.renderers.BrowsableAPIRenderer'# remove in production
-    # ],
-    # 'DEFAULT_PARSER_CLASSES': [
-    #     'rest_framework.parsers.JSONParser',# remove in production
-    #     # 'rest_framework.parsers.FormParser'
-    # ],
-    'DEFAULT_PREMISSION_CLASSES':[
+    'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES':[
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication'
     ]
+
 }
