@@ -25,6 +25,11 @@ INSTALLED_APPS = [
     'userextended.apps.UserextendedConfig',
     'access.apps.AccessConfig',
     'ads.apps.AdsConfig',
+    'channel.apps.ChannelConfig',
+    'catagories.apps.CatagoriesConfig',
+    'playlist.apps.PlaylistConfig',
+    'subscriber.apps.SubscriberConfig',
+    'video.apps.VideoConfig',
 ]
 
 MIDDLEWARE = [
