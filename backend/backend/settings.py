@@ -32,6 +32,10 @@ INSTALLED_APPS = [
     'video.apps.VideoConfig',
     'comments.apps.CommentsConfig',
     'dilike.apps.DilikeConfig',
+    'library.apps.LibraryConfig',
+    'report.apps.ReportConfig',
+    'view_history.apps.ViewHistoryConfig',
+    'watch_later.apps.WatchLaterConfig',
 ]
 
 MIDDLEWARE = [
