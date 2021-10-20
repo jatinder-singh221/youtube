@@ -46,6 +46,7 @@ class user_register(APIView):
         else:
             return Response(posted_data.errors)
 
+
 class user_logout(APIView):
     
     def get(self, request, *args, **kwargs):
