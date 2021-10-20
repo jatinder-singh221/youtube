@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'playlist.apps.PlaylistConfig',
     'subscriber.apps.SubscriberConfig',
     'video.apps.VideoConfig',
+    'comments.apps.CommentsConfig',
+    'dilike.apps.DilikeConfig',
 ]
 
 MIDDLEWARE = [
