@@ -1,9 +1,9 @@
-from rest_framework import response
+from rest_framework import  viewsets
 from rest_framework.response import Response
 from rest_framework import views
 from .models import channel_model
 from rest_framework import status
-from .serializer import channel_serializer
+from .serializer import channel_admin_serializer, channel_serializer
 
 
 class create_channel(views.APIView):
@@ -24,7 +24,7 @@ class create_channel(views.APIView):
                 return Response({'error':post_data.errors})
 
         except:
-            
+
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
 class channel_creater_view(views.APIView):
@@ -70,3 +70,9 @@ class channel_creater_view(views.APIView):
         except:
 
             return Response(status = status.HTTP_401_UNAUTHORIZED)
+
+
+class admin_channel(viewsets.ModelViewSet):
+
+        queryset = channel_model.objects.all()
+        serializer_class = channel_admin_serializer
