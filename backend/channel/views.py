@@ -1,9 +1,31 @@
-from rest_framework import generics
+from rest_framework import response
 from rest_framework.response import Response
 from rest_framework import views
 from .models import channel_model
 from rest_framework import status
 from .serializer import channel_serializer
+
+
+class create_channel(views.APIView):
+    
+    def post(self,request, *args, **kwargs):
+        
+        try:
+            
+            get_user = self.request.user
+            post_data = channel_serializer(get_user, data = request.data)
+
+            if post_data.is_valid():
+                post_data.save()
+                return Response(status = status.HTTP_201_CREATED)
+
+            else:
+
+                return Response({'error':post_data.errors})
+
+        except:
+            
+            return Response(status = status.HTTP_401_UNAUTHORIZED)
 
 class channel_creater_view(views.APIView):
 
