@@ -1,4 +1,4 @@
-from rest_framework import serializers, viewsets
+from rest_framework import  viewsets
 from .serializers import catagories_serializers
 from .models import catagories
 from django.views.decorators.csrf import csrf_protect

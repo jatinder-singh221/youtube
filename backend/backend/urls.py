@@ -9,7 +9,8 @@ urlpatterns = [
     path('aboutuser/',include('userextended.urls')),
     path('',include('access.urls')),
     path('ads',include('ads.urls')),
-    path('catagories',include('catagories.urls'))
+    path('catagories',include('catagories.urls')),
+    path('channel/', include('channel.urls'))
 ]
 
 if settings.DEBUG:
