@@ -5,35 +5,26 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
+from rest_framework.parsers import MultiPartParser,FormParser
 
 @method_decorator(csrf_protect, name = 'dispatch')
 class user_extended_view(APIView):
+    parser_classes = [MultiPartParser, FormParser]
 
     def get(self, request, *args, **kwargs):
-
-        try:
-
-            current_user = request.user
-            send_data = user_extended_serializers(current_user.userextended_related)
-            return Response(send_data.data)
-            
-        except :
-            return Response(status=status.HTTP_401_UNAUTHORIZED)        
+        current_user = request.user
+        send_data = user_extended_serializers(current_user.userextended_related)
+        return Response(send_data.data)       
 
     def patch(self, request, *args, **kwargs):
+        current_user = self.request.user
+        user = User.objects.get(id = current_user.id).userextended_related
+        update_data = user_extended_serializers(user, data = request.data, partial = True)
         
-        try:
-            current_user = request.user
-            get_user = User.objects.get(id = current_user.id)
-            update_date = user_extended_serializers(get_user, data = request.data, partial = True)
+        if update_data.is_valid():
+            update_data.save()
+            return Response(status = status.HTTP_202_ACCEPTED)
 
-            if update_date.is_valid():
-                update_date.save()
-                return Response(status = status.HTTP_202_ACCEPTED)
+        else:
 
-            else:
-
-                return Response(update_date.error) 
-        except:
-
-            return Response(status=status.HTTP_401_UNAUTHORIZED) 
+            return Response(update_data.errors) 
