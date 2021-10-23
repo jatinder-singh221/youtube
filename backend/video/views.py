@@ -1,9 +1,8 @@
-import re
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import GenericAPIView
 from .models import video
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets
 from .serializer import video_serializer
 from channel.models import channel_model
 from rest_framework.parsers import MultiPartParser, FormParser
@@ -60,5 +59,7 @@ class creater_video_delete_view(GenericAPIView, RetrieveModelMixin, UpdateModelM
 class user_video_view():
     pass
 
-class admin_video_view():
-    pass
+@method_decorator(csrf_protect, name = 'dispatch')
+class admin_video_view(viewsets.ModelViewSet):
+    queryset = video.objects.all()
+    serializer_class = video_serializer
