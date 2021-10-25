@@ -3,7 +3,7 @@ from .serializer import subscriber_serializer
 from channel.models import channel_model
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 
@@ -53,3 +53,9 @@ class subscriber_add_remove(APIView):
 
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
+
+
+@method_decorator(csrf_protect, name = 'dispatch')
+class adminsubscriber(viewsets.ModelViewSet):
+    queryset = subscriber.objects.all()
+    serializer_class = subscriber_serializer
