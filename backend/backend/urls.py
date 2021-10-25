@@ -11,7 +11,8 @@ urlpatterns = [
     path('ads',include('ads.urls')),
     path('catagories',include('catagories.urls')),
     path('channel/', include('channel.urls')),
-    path('video/', include('video.urls'))
+    path('video/', include('video.urls')),
+    path('subscriber/', include('subscriber.urls'))
 ]
 
 if settings.DEBUG:

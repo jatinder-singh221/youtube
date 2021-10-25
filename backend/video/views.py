@@ -39,6 +39,7 @@ class creater_video_view_create(ListModelMixin, GenericAPIView, CreateModelMixin
 @method_decorator(csrf_protect, name = 'dispatch')
 class creater_video_delete_view(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
     serializer_class = video_serializer
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         id = self.kwargs['pk']
@@ -71,6 +72,7 @@ class creater_video_delete_view(GenericAPIView, RetrieveModelMixin, UpdateModelM
 class user_video_view(RetrieveModelMixin, GenericAPIView):
     queryset = video.objects.all()
     serializer_class = video_serializer
+    parser_classes = [MultiPartParser, FormParser]
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
@@ -78,5 +80,6 @@ class user_video_view(RetrieveModelMixin, GenericAPIView):
 
 @method_decorator(csrf_protect, name = 'dispatch')
 class admin_video_view(viewsets.ModelViewSet):
+    parser_classes = [MultiPartParser, FormParser]
     queryset = video.objects.all()
     serializer_class = video_serializer

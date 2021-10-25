@@ -7,6 +7,9 @@ from .serializer import channel_admin_serializer, channel_serializer
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 from rest_framework.parsers import  MultiPartParser, FormParser
+from rest_framework.generics import ListAPIView
+from video.models import video
+from video.serializer import video_serializer
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
@@ -55,8 +58,18 @@ class channel_creater_view(views.APIView):
 
             return Response(status = status.HTTP_200_OK)
 
+class channel_videos(ListAPIView):
+    queryset = video.objects.all()
+    serializer_class = video_serializer
+    
+    def get_queryset(self):
+        id = self.kwargs['pk']
+        channel = channel_model.objects.get(id = id)
+        return  channel.video_related.all()
+
 
 @method_decorator(csrf_protect, name = 'dispatch')
 class admin_channel(viewsets.ModelViewSet):
-        queryset = channel_model.objects.all()
-        serializer_class = channel_admin_serializer
+    parser_classes = [MultiPartParser, FormParser]
+    queryset = channel_model.objects.all()
+    serializer_class = channel_admin_serializer

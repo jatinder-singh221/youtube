@@ -41,6 +41,10 @@ class user_register(APIView):
 
         if posted_data.is_valid():
             posted_data.save()
+            username = posted_data.validated_data.get('username')
+            password = posted_data.validated_data.get('password')
+            user = authenticate(username = username, password = password)
+            login(request, user)
             return Response(status = status.HTTP_201_CREATED)
 
         else:
