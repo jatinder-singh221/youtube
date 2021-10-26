@@ -12,7 +12,8 @@ urlpatterns = [
     path('catagories',include('catagories.urls')),
     path('channel/', include('channel.urls')),
     path('video/', include('video.urls')),
-    path('subscriber/', include('subscriber.urls'))
+    path('subscriber/', include('subscriber.urls')),
+    path('likedislike/', include('dilike.urls'))
 ]
 
 if settings.DEBUG:
