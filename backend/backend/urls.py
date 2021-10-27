@@ -15,6 +15,7 @@ urlpatterns = [
     path('subscriber/', include('subscriber.urls')),
     path('likedislike/', include('dilike.urls')),
     path('library/', include('library.urls')),
+    path('playlist/', include('playlist.urls')),
 ]
 
 if settings.DEBUG:
