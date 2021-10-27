@@ -14,7 +14,7 @@ urlpatterns = [
     path('video/', include('video.urls')),
     path('subscriber/', include('subscriber.urls')),
     path('likedislike/', include('dilike.urls')),
-    path('library', include('library.urls')),
+    path('library/', include('library.urls')),
 ]
 
 if settings.DEBUG:

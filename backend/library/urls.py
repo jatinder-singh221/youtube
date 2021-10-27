@@ -1,9 +1,7 @@
-from rest_framework import urlpatterns
-from rest_framework import routers
-from rest_framework.routers import DefaultRouter
-from .views import user_library
+from django.urls import path
+from .views import create_view_library, update_delete_view
 
-router = DefaultRouter()
-router.register(r'^', user_library)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('', create_view_library.as_view()),
+    path('<int:pk>/', update_delete_view.as_view())
+]
