@@ -5,6 +5,7 @@ from .models import palylist
 from rest_framework.response import Response
 from rest_framework import status
 from channel.models import channel_model
+from rest_framework import viewsets
 
 class create_list_view(GenericAPIView, ListModelMixin, CreateModelMixin):
     serializer_class = playlist_serializer
@@ -50,3 +51,7 @@ class updata_delete_view(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
         user = self.request.user
         get_channel = channel_model.objects.select_related('user').get(user = user)
         return palylist.objects.select_related('channel_is').filter(channel_is = get_channel, id = id)
+
+class adminplaylist(viewsets.ModelViewSet):
+    queryset = palylist.objects.all()
+    serializer_class = playlist_serializer

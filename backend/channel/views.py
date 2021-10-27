@@ -10,6 +10,7 @@ from rest_framework.parsers import  MultiPartParser, FormParser
 from rest_framework.generics import ListAPIView
 from video.models import video
 from video.serializer import video_serializer
+from playlist.models import palylist
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
@@ -66,6 +67,15 @@ class channel_videos(ListAPIView):
         id = self.kwargs['pk']
         channel = channel_model.objects.get(id = id)
         return  channel.video_related.all()
+
+# class channel_playlist(ListAPIView):
+#     queryset = video.objects.all()
+#     serializer_class = video_serializer
+    
+#     def get_queryset(self):
+#         id = self.kwargs['pk']
+#         channel = channel_model.objects.get(id = id)
+#         return  channel.video_related.all()
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
