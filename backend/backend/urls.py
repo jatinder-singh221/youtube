@@ -17,6 +17,7 @@ urlpatterns = [
     path('library/', include('library.urls')),
     path('playlist/', include('playlist.urls')),
     path('report/', include('report.urls')),
+    path('history/', include('view_history.urls')),
 ]
 
 if settings.DEBUG:

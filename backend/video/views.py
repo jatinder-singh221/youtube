@@ -1,5 +1,7 @@
+from rest_framework import views
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import GenericAPIView
+from rest_framework.views import APIView
 from .models import video
 from rest_framework.response import Response
 from rest_framework import status, viewsets
@@ -8,6 +10,8 @@ from channel.models import channel_model
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
+from view_history.models import histroy
+from video.models import video
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
@@ -83,3 +87,10 @@ class admin_video_view(viewsets.ModelViewSet):
     parser_classes = [MultiPartParser, FormParser]
     queryset = video.objects.all()
     serializer_class = video_serializer
+
+class video_view(APIView):
+
+    def get(self, request,pk, *args, **kwargs):
+        videos = video.objects.get(id = pk)
+        view = histroy.objects.select_related('video').filter(video = videos)
+        return Response({'view':view.count()})
