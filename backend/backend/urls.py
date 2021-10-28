@@ -16,6 +16,7 @@ urlpatterns = [
     path('likedislike/', include('dilike.urls')),
     path('library/', include('library.urls')),
     path('playlist/', include('playlist.urls')),
+    path('report/', include('report.urls')),
 ]
 
 if settings.DEBUG:

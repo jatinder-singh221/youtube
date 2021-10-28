@@ -11,6 +11,7 @@ from rest_framework.generics import ListAPIView
 from video.models import video
 from video.serializer import video_serializer
 from playlist.models import palylist
+from playlist.serializers import playlist_serializer
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
@@ -68,14 +69,14 @@ class channel_videos(ListAPIView):
         channel = channel_model.objects.get(id = id)
         return  channel.video_related.all()
 
-# class channel_playlist(ListAPIView):
-#     queryset = video.objects.all()
-#     serializer_class = video_serializer
-    
-#     def get_queryset(self):
-#         id = self.kwargs['pk']
-#         channel = channel_model.objects.get(id = id)
-#         return  channel.video_related.all()
+class channel_playlist(ListAPIView):
+    queryset = palylist.objects.all()
+    serializer_class = playlist_serializer
+
+    def get_queryset(self):
+        id = self.kwargs['pk']
+        channel = channel_model.objects.get(id = id)
+        return self.queryset.select_related('channel_is').filter(channel_is = channel)
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
