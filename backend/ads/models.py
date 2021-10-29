@@ -8,3 +8,6 @@ class ad_creation(models.Model):
 
     def __str__(self):
         return str(self.link)
+
+    class Meta:
+        verbose_name = 'ad'

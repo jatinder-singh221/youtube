@@ -20,3 +20,7 @@ class user_extended(models.Model):
     def __str__(self):
         return str(self.user)
 
+    class Meta:
+        db_table = 'Extended'
+        verbose_name_plural = 'Extended'
+

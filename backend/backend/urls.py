@@ -6,10 +6,10 @@ from django.conf import settings
 
 urlpatterns = [
     path(config('ADMIN_URL'), admin.site.urls),
-    path('aboutuser/',include('userextended.urls')),
-    path('',include('access.urls')),
-    path('ads',include('ads.urls')),
-    path('catagories',include('catagories.urls')),
+    path('backendabout/',include('userextended.urls')),
+    path('backendauth/',include('access.urls')),
+    path('backendads',include('ads.urls')),
+    path('backendcatagories',include('catagories.urls')),
     path('channel/', include('channel.urls')),
     path('video/', include('video.urls')),
     path('subscriber/', include('subscriber.urls')),
