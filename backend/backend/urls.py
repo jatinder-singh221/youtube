@@ -13,7 +13,7 @@ urlpatterns = [
     path('backendchannel/', include('channel.urls')),
     path('video/', include('video.urls')),
     path('subscriber/', include('subscriber.urls')),
-    path('likedislike/', include('dilike.urls')),
+    path('backendvotes/', include('dilike.urls')),
     path('library/', include('library.urls')),
     path('playlist/', include('playlist.urls')),
     path('report/', include('report.urls')),

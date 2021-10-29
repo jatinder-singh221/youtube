@@ -13,3 +13,6 @@ class comments(models.Model):
     def __str__(self):
         return str(self.comment_text)
 
+    class Meta:
+        verbose_name = 'comment'
+

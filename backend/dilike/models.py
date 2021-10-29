@@ -10,4 +10,7 @@ class like_dislike(models.Model):
 
     def __str__(self) -> str:
         return str(self.user)
+
+    class Meta:
+        verbose_name = 'Vote'
         
