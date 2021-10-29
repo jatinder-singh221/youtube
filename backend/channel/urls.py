@@ -7,8 +7,8 @@ router.register(r'^', admin_channel)
 
 urlpatterns = [
     path('create/',create_channel.as_view()),
-    path('view/',channel_creater_view.as_view()),
+    path('',channel_creater_view.as_view()),
     path('videos/<int:pk>/',channel_videos.as_view()),
-    path('channelplay/<int:pk>/',channel_playlist.as_view()),
+    path('playlists/<int:pk>/',channel_playlist.as_view()),
     path('channeladmin',include(router.urls))
 ]

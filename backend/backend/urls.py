@@ -10,7 +10,7 @@ urlpatterns = [
     path('backendauth/',include('access.urls')),
     path('backendads',include('ads.urls')),
     path('backendcatagories',include('catagories.urls')),
-    path('channel/', include('channel.urls')),
+    path('backendchannel/', include('channel.urls')),
     path('video/', include('video.urls')),
     path('subscriber/', include('subscriber.urls')),
     path('likedislike/', include('dilike.urls')),

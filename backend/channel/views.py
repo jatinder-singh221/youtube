@@ -1,4 +1,4 @@
-from rest_framework import  viewsets
+from rest_framework import  viewsets, permissions
 from rest_framework.response import Response
 from rest_framework import views
 from .models import channel_model
@@ -12,6 +12,8 @@ from video.models import video
 from video.serializer import video_serializer
 from playlist.models import palylist
 from playlist.serializers import playlist_serializer
+from .permission import is_creator
+from ads.premission import is_admins
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
@@ -35,6 +37,7 @@ class create_channel(views.APIView):
 @method_decorator(csrf_protect, name = 'dispatch')
 class channel_creater_view(views.APIView):
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [is_creator]
 
     def get(self, request, *args, **kwargs):
         get_channel = channel_model.objects.select_related('user').get(user = self.request.user)
@@ -72,6 +75,7 @@ class channel_videos(ListAPIView):
 class channel_playlist(ListAPIView):
     queryset = palylist.objects.all()
     serializer_class = playlist_serializer
+    permission_classes = [is_creator]
 
     def get_queryset(self):
         id = self.kwargs['pk']
@@ -84,3 +88,4 @@ class admin_channel(viewsets.ModelViewSet):
     parser_classes = [MultiPartParser, FormParser]
     queryset = channel_model.objects.all()
     serializer_class = channel_admin_serializer
+    permission_classes = [is_admins]

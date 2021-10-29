@@ -7,7 +7,7 @@ class channel_serializer(serializers.ModelSerializer):
 
     class Meta:
         model = channel_model
-        exclude = ['can_upload_video']
+        exclude = ['can_upload_video', 'id']
 
 
 class channel_admin_serializer(serializers.ModelSerializer):

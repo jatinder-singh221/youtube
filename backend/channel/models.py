@@ -22,3 +22,6 @@ class channel_model(models.Model):
     def __str__(self):
         return str(self.channel_name)
 
+    class Meta:
+        verbose_name = 'Channel'
+
