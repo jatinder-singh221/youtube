@@ -11,14 +11,14 @@ urlpatterns = [
     path('backendads',include('ads.urls')),
     path('backendcatagories',include('catagories.urls')),
     path('backendchannel/', include('channel.urls')),
-    path('video/', include('video.urls')),
-    path('subscriber/', include('subscriber.urls')),
+    path('backendvideo/', include('video.urls')),
+    path('backendsubscriber/', include('subscriber.urls')),
     path('backendvotes/', include('dilike.urls')),
-    path('library/', include('library.urls')),
-    path('playlist/', include('playlist.urls')),
-    path('report/', include('report.urls')),
-    path('history/', include('view_history.urls')),
-    path('watch/', include('watch_later.urls')),
+    path('backendlibrary/', include('library.urls')),
+    path('backendplaylist/', include('playlist.urls')),
+    path('backendreport/', include('report.urls')),
+    path('backendhistory/', include('view_history.urls')),
+    path('backendwatch/', include('watch_later.urls')),
 ]
 
 if settings.DEBUG:

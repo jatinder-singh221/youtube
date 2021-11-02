@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from .serializers import login_serializers, regisation_serializer
+from .serializers import login_serializer, registration_serializer
 from rest_framework.response import Response
 from rest_framework import status,permissions
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +11,7 @@ class user_login(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
-        posted_data = login_serializers(data = request.data)
+        posted_data = login_serializer(data = request.data)
         
         if posted_data.is_valid():
             get_username = posted_data.validated_data.get('username')
@@ -37,7 +37,7 @@ class user_register(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
-        posted_data = regisation_serializer(data = request.data)
+        posted_data = registration_serializer(data = request.data)
 
         if posted_data.is_valid():
             posted_data.save()

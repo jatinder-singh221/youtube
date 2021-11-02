@@ -1,12 +1,12 @@
-from rest_framework import fields, serializers
+from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 
-class login_serializers(serializers.Serializer):
+class login_serializer(serializers.Serializer):
     username = serializers.CharField(max_length = 225)
     password = serializers.CharField(max_length = 125)
 
-class regisation_serializer(serializers.ModelSerializer):
+class registration_serializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     password2 = serializers.CharField(write_only=True, required=True)
 

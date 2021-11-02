@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from channel.models import channel_model
 from rest_framework import viewsets
-from rest_framework.parsers import  MultiPartParser, FormParser
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 

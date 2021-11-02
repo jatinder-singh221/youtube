@@ -9,6 +9,6 @@ urlpatterns = [
     path('view/',creater_video_view_create.as_view()),
     path('view/<int:pk>/',creater_video_delete_view.as_view()),
     path('watch/<int:pk>/', user_video_view.as_view()),
-    path('watched/<int:pk>/', video_view.as_view()),
+    path('videoviews/<int:pk>/', video_view.as_view()),
     path('videoadmin',include(router.urls) )
 ]
