@@ -19,6 +19,7 @@ urlpatterns = [
     path('backendreport/', include('report.urls')),
     path('backendhistory/', include('view_history.urls')),
     path('backendwatch/', include('watch_later.urls')),
+    path('backendcomments/', include('comments.urls')),
 ]
 
 if settings.DEBUG:
