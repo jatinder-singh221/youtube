@@ -60,7 +60,18 @@ class video_comments(ListAPIView):
 
 
 @method_decorator(csrf_protect, name = 'dispatch')
-class admin_creator_view(viewsets.ModelViewSet):
+class creator_view(GenericAPIView, ListModelMixin):
+    serializer_class = comment_serializer
+    permission_classes = [is_creator]
+
+    def get_queryset(self):
+        id = self.kwargs['pk']
+        get_video = video.objects.get(id = id)
+        return comments.objects.filter(video = get_video)
+
+
+@method_decorator(csrf_protect, name = 'dispatch')
+class admin_view(viewsets.ModelViewSet):
     queryset = comments.objects.all()
     serializer_class = comment_serializer
-    permission_classes = [is_admins, is_creator]
+    permission_classes = [is_admins]
