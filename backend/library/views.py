@@ -4,8 +4,10 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
 from rest_framework import status
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 
-
+@method_decorator(csrf_protect, name = 'dispatch')
 class create_view_library(GenericAPIView, ListModelMixin, CreateModelMixin):
     serializer_class = library_serializer
 
@@ -26,6 +28,8 @@ class create_view_library(GenericAPIView, ListModelMixin, CreateModelMixin):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+
+@method_decorator(csrf_protect, name = 'dispatch')
 class update_delete_view(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
     serializer_class = library_serializer
 

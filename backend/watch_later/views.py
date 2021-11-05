@@ -1,12 +1,14 @@
-from django.core.exceptions import RequestAborted
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, DestroyModelMixin
 from rest_framework.generics import GenericAPIView
 from .models import watch
 from .serializer import watch_serialzer
 from rest_framework.response import Response
 from rest_framework import status
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 
 
+@method_decorator(csrf_protect, name = 'dispatch')
 class list_create(GenericAPIView, ListModelMixin, CreateModelMixin):
     serializer_class = watch_serialzer
 
@@ -27,6 +29,7 @@ class list_create(GenericAPIView, ListModelMixin, CreateModelMixin):
         return watch.objects.select_related('user').filter(user = user)
 
 
+@method_decorator(csrf_protect, name = 'dispatch')
 class upate_delete(GenericAPIView, RetrieveModelMixin, DestroyModelMixin):
     serializer_class = watch_serialzer
     

@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from video.models import video
 from rest_framework import status
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 
 
 class get_like_dislikes(APIView):
@@ -14,6 +16,8 @@ class get_like_dislikes(APIView):
         dislike = get_video.like_video_related.all().filter(is_dislike = True)
         return Response({'like': like.count(), 'dislike': dislike.count()})
 
+
+@method_decorator(csrf_protect, name = 'dispatch')
 class add_remove_like(APIView):
 
     def patch(self, request, pk, *args, **kwargs):
@@ -36,6 +40,8 @@ class add_remove_like(APIView):
 
         return Response(status = status.HTTP_202_ACCEPTED)
 
+
+@method_decorator(csrf_protect, name = 'dispatch')
 class add_remove_dislike(APIView):
 
     def patch(self, request, pk, *args, **kwargs):
