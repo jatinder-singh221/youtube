@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import styled from 'styled-components'
 import reorder from '../assests/icons/reorder.svg'
 import logo from '../assests/YouTube.svg'
@@ -11,6 +11,16 @@ import {globalContext} from '../App'
 
 export default function Navbar() {
     const value = useContext(globalContext)
+    const [showSearch, setshowSearch] = useState(false)
+
+    const changesearch = (e) => {
+        if (e.target.value === ''){
+            setshowSearch(false)
+        }
+        else{
+            setshowSearch(true)
+        }
+    }
 
     return (
         <Header>
@@ -22,9 +32,12 @@ export default function Navbar() {
             </Cover>
             <Form>
                 <Box>
-                <Input type="search" name="search" list = 'search' placeholder='Search' autoComplete = 'off' />
+                <Input type="search" name="search" list = 'search' placeholder='Search' autoComplete = 'off' onKeyUp={changesearch} />
                 <Button><img src = {search} alt="search" /></Button>
                 </Box>
+                {showSearch?<Ul>
+                    <Li>item 1</Li>
+                </Ul>:''}
             </Form>
             <Cover>
                 <Iconcover>
@@ -57,14 +70,15 @@ const Iconcover = styled.div`
     align-items: center;
     justify-content: center;
     padding:0.2em;
+    margin:0 0.4em;
 
     &:active{
         background-color: #373737;
     }
 `
 const Icon = styled.img`
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
 `
 
 const Cover = styled.div`
@@ -79,6 +93,8 @@ const Logo = styled.img`
 const Form = styled.form`
     display:flex;
     align-items: center;
+    flex-direction: column;
+    position: relative;
 `
 
 const Box = styled.div`
@@ -94,6 +110,7 @@ const Input = styled.input`
     border:none;
     padding-left:1em;
     background-color: #121212;
+    color:#fff;
 
 `
 const Button = styled.button`
@@ -122,4 +139,24 @@ const Sign = styled.button`
     background:none;
     color:#3EA6FF;
     padding:.4em 1.5em;
+`
+const Ul = styled.ul`
+    position: absolute;
+    background-color: #202020;
+    width: 100%;
+    min-height: 40vh;
+    margin-top: 2.5em;
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+`
+const Li = styled.li`
+    color:#757575;
+    width: 100%;
+    height: 2em;
+    padding-left: 1em;
+
+    &:hover{
+        background-color: #383838;
+    }
 `
