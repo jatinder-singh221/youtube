@@ -1,9 +1,28 @@
-import React from 'react'
+import React, {useState, createContext} from 'react'
+import Mainrouter from './Routers/Mainrouter'
 
-export const App = () => {
+const globalContext = createContext()
+
+export default function App() {
+  
+
+  const [isLogin, setislogin] = useState(true)
+  const [hasNotification, sethasnotification] = useState(false)
+  const [isCreator, setiscreator] = useState(false)
+  const [isAdmin, setisadmin] = useState(false)
+
+
+  const returnedValue = {
+    isLogin, hasNotification, isCreator, isAdmin
+  }
+
   return (
-    <div>
-      
-    </div>
+
+    <globalContext.Provider value = {returnedValue}>
+      <Mainrouter />
+    </globalContext.Provider>
+
   )
 }
+
+export {globalContext}
