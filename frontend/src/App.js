@@ -5,7 +5,7 @@ const globalContext = createContext()
 
 export default function App() {
   
-
+  const [username, setusername] = useState('')
   const [isLogin, setislogin] = useState(false)
   const [hasNotification, sethasnotification] = useState(false)
   const [isCreator, setiscreator] = useState(false)

@@ -1,6 +1,6 @@
 import React from 'react'
 import nFounded from '../assests/notfounded.svg'
-import aLeft from '../assests/icons/arrowleft.svg'
+import FeatherIcon from 'feather-icons-react';
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
@@ -8,7 +8,7 @@ export default function Notfounded() {
     return (
         <Div>
             <Img src={nFounded} alt="404" />
-            <Styledlink to = '/'><Icon src={aLeft} alt="arrowleft" /> Go To Homepage</Styledlink>
+            <Styledlink to = '/'><FeatherIcon icon = 'arrow-left' /> Go To Homepage</Styledlink>
         </Div>
     )
 }
@@ -42,9 +42,4 @@ const Styledlink = styled(Link)`
     &:active{
         box-shadow: 0 2px 5px #202020;
     }
-`
-const Icon = styled.img`
-    width: 24px;
-    height: 24px;
-    padding:0 0.2em ;
 `
