@@ -1,15 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import styled from 'styled-components'
-import {Header, Img, Box, Cover, Icon, Search, Ul, Li} from '../web/Webnavbar'
+import {Header, Img, Box, Cover, Icon, Search, Ul, Li, Bage, Profile} from '../web/Webnavbar'
 import Logo from '../../assests/YouTube.svg'
+import {Link} from 'react-router-dom'
+import {globalContext} from '../../App'
+import test from '../../assests/test.jpg'
 
 export default function Mobilenavbar() {
+    const Value = useContext(globalContext)
     const [showSearch, setshowSearch] = useState(false)
     const [showcancel, setshowcancel] = useState(false)
     const [seachValue, setseachValue] = useState('')
 
     const changeSearch = () =>{
-        console.log('hi');
         setshowSearch(!showSearch)
     }
 
@@ -33,10 +36,13 @@ export default function Mobilenavbar() {
                         </Cover>
                         <Cover >
                             <Icon icon= 'bell' />
+                            {Value.hasNotification?<Bage />:''}
                         </Cover>
-                        <Cover>
-                            <Icon icon= 'user'></Icon>
-                        </Cover>
+                        <Link to = 'auth/login'>
+                            <Cover>
+                                {Value.isLogin?<Profile src = {test} />:<Icon icon= 'user'></Icon>}
+                            </Cover>
+                        </Link>
                     </Box>
                 </>
             :
