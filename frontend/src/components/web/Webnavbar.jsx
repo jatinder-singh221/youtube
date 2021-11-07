@@ -10,9 +10,9 @@ export default function Webnavbar() {
     const Value = useContext(globalContext)
 
     const [showsearchresult, setshowsearchresult] = useState(false)
+    const [seachValue, setseachValue] = useState('')
 
     const changeresult = (e) =>{
-        console.log(e.target.value);
         if (e.target.value === ''){
             setshowsearchresult(false)
         }
@@ -31,7 +31,7 @@ export default function Webnavbar() {
             </Box>
                 <Form>
                     <Conatiner>
-                        <Search type="text" name="search" placeholder = 'Search' autoComplete = 'off' onKeyUp = {changeresult} />
+                        <Search type="text" name="search" placeholder = 'Search' autoComplete = 'off' onKeyUp = {changeresult} value = {seachValue} onChange={(e) => setseachValue(e.target.value)}/>
                         <Searchbutton icon='search' />
                     </Conatiner>
                         {showsearchresult?<Ul>
@@ -53,16 +53,17 @@ export default function Webnavbar() {
     )
 }
 
-const Header = styled.header`
+export const Header = styled.header`
     width: 100%;
     height: 60px;
     background-color: #202020;
     user-select: none;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 `
 
-const Box = styled.div`
+export const Box = styled.div`
     display: flex;
     align-items: center;
 `
@@ -87,7 +88,7 @@ export const Icon = styled(FeatherIcon)`
     color: #fff;
 `
 
-const Img = styled.img`
+export const Img = styled.img`
     width:130px;
     height: 60px;
 `
@@ -130,7 +131,7 @@ const Conatiner = styled.div`
     margin: auto;
     display: flex;
 `
-const Search = styled.input`
+export const Search = styled.input`
     width: 100%;
     height: 38px;
     border-radius: 5px 0 0 5px;
@@ -148,7 +149,7 @@ const Searchbutton = styled(FeatherIcon)`
     padding:0 0.8em ;
     border-radius: 0 5px 5px 0;
 `
-const Ul = styled.ul`
+export const Ul = styled.ul`
     position: absolute;
     width: 80%;
     margin: auto;
@@ -160,7 +161,7 @@ const Ul = styled.ul`
     padding: 0;
 `
 
-const Li = styled.li`
+export const Li = styled.li`
     height: 2em;
     vertical-align: center;
     color:#fff;

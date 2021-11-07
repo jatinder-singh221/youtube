@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserView, MobileView} from 'react-device-detect'
+import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
 import Webnavbar from '../components/web/Webnavbar'
 import Mobilenavbar from '../components/mobile/Mobilenavbar'
 
@@ -9,9 +9,12 @@ export default function Home() {
             <BrowserView>
                 <Webnavbar />
             </BrowserView>
-            <MobileView>
+            <TabletView>
+                <Webnavbar />
+            </TabletView>
+            <MobileOnlyView>
                 <Mobilenavbar />
-            </MobileView>
+            </MobileOnlyView>
         </>
     )
 }
