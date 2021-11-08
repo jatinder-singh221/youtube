@@ -19,7 +19,10 @@ export default function Webaside() {
             <Styledlink to = '/youtubepre'><Icon icon='youtube' /> Premium</Styledlink>
             <Styledlink to = '/explore/trending'><Icon icon='activity' /> Trending</Styledlink>
             <Styledlink to = '/explore/movies'><Icon icon='film' /> Movies</Styledlink>
+            <Styledlink to = '/explore/game'><Icon icon='box' /> Games</Styledlink>
             <Styledlink to = '/explore/live'><Icon icon='bar-chart-2' /> Live</Styledlink>
+            <Hr />
+            <Styledlink to = '/explore/Channels'><Icon icon='plus-circle' /> All channels</Styledlink>
             <Hr />
             <Styledlink to = '/settings'><Icon icon='settings' /> Settings</Styledlink>
             <Styledlink to = '/help'><Icon icon='help-circle' /> Help</Styledlink>
@@ -27,13 +30,13 @@ export default function Webaside() {
             <Hr />
             <More to= '/about'>About</More>
             <More to= '/contact'>Contact Us</More>
+            <P>&copy; YouTube.com</P>
         </Nav>
     )
 }
 
 const Nav = styled.nav`
     padding-top: 60px;
-    padding-bottom: 2em;
     height: calc(100vh - 60px);
     width: 224px;
     background-color: #202020;
