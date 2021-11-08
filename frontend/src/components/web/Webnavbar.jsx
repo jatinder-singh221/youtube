@@ -56,11 +56,13 @@ export default function Webnavbar() {
 export const Header = styled.header`
     width: 100%;
     height: 60px;
+    position: fixed;
     background-color: #202020;
     user-select: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 999;
 `
 
 export const Box = styled.div`
