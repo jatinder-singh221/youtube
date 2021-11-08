@@ -32,6 +32,8 @@ export default function Mobileaside() {
 
 const Nav = styled.nav`
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     position: absolute;
     z-index: 999;
     width: 100%;
@@ -50,8 +52,9 @@ const Styledlink = styled(NavLink)`
     justify-content: center;
     flex-direction: column;
     padding: auto;
-    width:80px;
+    width: auto;
     height: 50px;
+    padding: 0 3%;
     color:#909090;
     background-color: transparent;
     text-decoration: none;
