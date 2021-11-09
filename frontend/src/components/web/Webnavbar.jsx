@@ -6,7 +6,7 @@ import Logo from '../../assests/YouTube.svg'
 import {globalContext} from '../../App'
 import test from '../../assests/test.jpg'
 
-export default function Webnavbar() {
+export default function Webnavbar(props) {
     const Value = useContext(globalContext)
 
     const [showsearchresult, setshowsearchresult] = useState(false)
@@ -24,7 +24,7 @@ export default function Webnavbar() {
     return (
         <Header>
             <Box>
-                <Cover>
+                <Cover onClick = {() => props.showHide()}>
                    <Icon icon = 'menu' />
                 </Cover>
                 <Link to = '/'><Img src = {Logo} alt="logo" /></Link>

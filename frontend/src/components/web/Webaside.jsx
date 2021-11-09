@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import {NavLink, Link} from 'react-router-dom'
 import FeatherIcon from 'feather-icons-react'
 
-export default function Webaside() {
+export default function Webaside(props) {
     return (
         <Nav>
-            <Styledlink to = '/'><Icon icon='home' /> Home</Styledlink>
+            <Styledlink to = '/' ><Icon icon='home' /> Home</Styledlink>
             <Styledlink to = '/explore'><Icon icon='compass' /> Explore</Styledlink>
             <Styledlink to = '/subscription'><Icon icon='briefcase' /> Subscription</Styledlink>
             <Hr />
