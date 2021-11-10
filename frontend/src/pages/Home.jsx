@@ -1,9 +1,10 @@
 import React,{useState} from 'react'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
-import Webnavbar from '../components/web/Webnavbar'
-import Mobilenavbar from '../components/mobile/Mobilenavbar'
+import Loading from '../components/Loading'
 import Webaside from '../components/web/Webaside'
-import Mobileaside from '../components/mobile/Mobileaside'
+const Webnavbar = React.lazy(() => import('../components/web/Webnavbar'))
+const Mobilenavbar = React.lazy(() => import('../components/mobile/Mobilenavbar'))
+const Mobileaside = React.lazy(() => import('../components/mobile/Mobileaside'))
 
 export default function Home() {
     const [showaside, setshowaside] = useState(true)
@@ -16,7 +17,7 @@ export default function Home() {
         settabAside(!tabAside)
     }
     return (
-        <>
+        <React.Suspense fallback = {<Loading />}>
             <BrowserView>
                 <Webnavbar showHide = {changeAside} />
                 {showaside?<Webaside />:''}
@@ -29,6 +30,6 @@ export default function Home() {
                 <Mobilenavbar />
                 <Mobileaside />
             </MobileOnlyView>
-        </>
+        </React.Suspense>
     )
 }
