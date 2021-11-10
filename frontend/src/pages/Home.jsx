@@ -6,6 +6,7 @@ const Webnavbar = React.lazy(() => import('../components/web/Webnavbar'))
 const Mobilenavbar = React.lazy(() => import('../components/mobile/Mobilenavbar'))
 const Mobileaside = React.lazy(() => import('../components/mobile/Mobileaside'))
 
+
 export default function Home() {
     const [showaside, setshowaside] = useState(true)
     const [tabAside, settabAside] = useState(false)
