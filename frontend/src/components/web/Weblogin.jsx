@@ -1,11 +1,13 @@
 import React from 'react'
 import Google from '../../assests/YouTube.svg'
+import Login from '../../assests/login.mp4'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 export default function Weblogin() {
     return (
         <Cover>
+            <Video src={Login} loop muted autoPlay></Video>
             <Form>
                 <Img src={Google} alt="google logo" />
                 <Inputcover>
@@ -34,8 +36,16 @@ export const Cover = styled.div `
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    background-color: #000;
 
+`
+
+export const Video =styled.video`
+    left:0;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
 `
 
 export const Form = styled.form`
@@ -45,12 +55,19 @@ export const Form = styled.form`
     border:1px solid #313131;
     margin: auto;
     border-radius: 10px;
+    z-index: 999;
+    background-color: #181818d1;
+
+    @media (max-width:1024px){
+        width: 60vw;
+        height: 50vh;
+    }
 `
 
 export const Img = styled.img`
-    width: 100%;
-    height: 15vh;
-    margin:1em 0;
+    width: 80%;
+    height: 10vh;
+    margin:2em auto;
 `
 
 export const Inputcover = styled.div`
@@ -64,7 +81,7 @@ export const Inputcover = styled.div`
 export const Label = styled.label`
     position: absolute;
     color: #909090;
-    background-color: #181818;
+    background-color: #181818d1;
     left: 1em;
     top:35%;
 `
