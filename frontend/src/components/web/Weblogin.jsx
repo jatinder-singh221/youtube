@@ -1,5 +1,5 @@
 import React from 'react'
-import Google from '../../assests/Google.svg'
+import Google from '../../assests/YouTube.svg'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
@@ -9,14 +9,16 @@ export default function Weblogin() {
             <Form>
                 <Img src={Google} alt="google logo" />
                 <Inputcover>
-                    <Input type="email" id='email' name = 'email' autoComplete = 'off' autoFocus/>
+                    <Input type="email" id='email' name = 'email' autoComplete = 'off' autoFocus   invalid />
                     <Label htmlFor="email">Username</Label>
+                    {/* <Small>Invalid username</Small> */}
                 </Inputcover>
                 <Inputcover>
-                    <Input type="password" id = 'pass'  name = 'pass'/>
+                    <Input type="password" id = 'pass'  name = 'pass' />
                     <Label htmlFor="pass">Password</Label>
+                    {/* <Small>Invalid Password</Small> */}
                 </Inputcover>
-                <Button>Login</Button>
+                <Button type = 'submit'>Login</Button>
                 <Box>
                     <Forget to = 'auth/forget'>Forget Password ?</Forget>
                     <New to = 'auth/register'>Create Account</New>
@@ -31,14 +33,15 @@ export const Cover = styled.div `
     height: 100vh;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
+
 `
 
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    width: 40vw;
-    height: auto;
+    width: 35vw;
     border:1px solid #313131;
     margin: auto;
     border-radius: 10px;
@@ -46,7 +49,7 @@ export const Form = styled.form`
 
 export const Img = styled.img`
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     margin:1em 0;
 `
 
@@ -54,8 +57,8 @@ export const Inputcover = styled.div`
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin: auto;
     position: relative;
+    margin: 0 auto;
 `
 
 export const Label = styled.label`
@@ -84,6 +87,7 @@ export const Input = styled.input`
         top:0;
         color: #3EA6FF;
     }
+
 `
 
 export const  Button = styled.button`
@@ -124,4 +128,8 @@ export const  Box = styled.div`
     justify-content: space-between;
     width: 90%;
     margin:1em auto;
+`
+
+export const Small = styled.small`
+    color: #ff0000;
 `
