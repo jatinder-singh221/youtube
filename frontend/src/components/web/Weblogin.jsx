@@ -1,26 +1,57 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Google from '../../assests/YouTube.svg'
 import Login from '../../assests/login.mp4'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 export default function Weblogin() {
+    const [username, setusername] = useState('')
+    const [password, setpassword] = useState('')
+
+    const setActive = (e) =>{
+        if (e.target.id === 'email'){
+            let element = document.getElementById('lemail')
+            if (e.target.value !== ''){
+                element.classList.add('active')
+            }
+            else{
+                element.classList.remove('active')
+            }
+        }
+        else{
+            let element = document.getElementById('lpass')
+            if (e.target.value !== ''){
+                element.classList.add('active')
+            }
+            else{
+                element.classList.remove('active')
+            }
+        }
+    }
+
+    const Submit = (e) =>{
+        e.preventDefault()
+        let form = new FormData()
+        form.append('username',username)
+        form.append('password',password)
+    }
+
     return (
         <Cover>
             <Video src={Login} loop muted autoPlay></Video>
-            <Form>
+            <Form onSubmit={Submit}>
                 <Img src={Google} alt="google logo" />
                 <Inputcover>
-                    <Input type="email" id='email' name = 'email' autoComplete = 'off' autoFocus   invalid />
-                    <Label htmlFor="email">Username</Label>
+                    <Input type="email" id='email' name = 'email' autoComplete = 'off' autoFocus  value = {username} onChange ={(e) => setusername(e.target.value)} onKeyDown ={setActive}/>
+                    <Label htmlFor="email" id='lemail'>Username</Label>
                     {/* <Small>Invalid username</Small> */}
                 </Inputcover>
                 <Inputcover>
-                    <Input type="password" id = 'pass'  name = 'pass' />
-                    <Label htmlFor="pass">Password</Label>
+                    <Input type="password" id = 'pass'  name = 'pass' value = {password} onChange ={(e) => setpassword(e.target.value)} onKeyDown={setActive}/>
+                    <Label htmlFor="pass" id = 'lpass'>Password</Label>
                     {/* <Small>Invalid Password</Small> */}
                 </Inputcover>
-                <Button type = 'submit'>Login</Button>
+                {username !== '' && password !== ''?<Button type = 'submit'>Login</Button>: <Button type = 'button' disabled>Login</Button>}
                 <Box>
                     <Forget to = 'auth/forget'>Forget Password ?</Forget>
                     <New to = 'auth/register'>Create Account</New>
@@ -38,6 +69,13 @@ export const Cover = styled.div `
     flex-direction: column;
     background-color: #000;
 
+    .active{
+        top:0;
+    }
+    .error{
+        background-color: #ff0000;
+    }
+
 `
 
 export const Video =styled.video`
@@ -51,7 +89,7 @@ export const Video =styled.video`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    width: 35vw;
+    width: 30vw;
     border:1px solid #313131;
     margin: auto;
     border-radius: 10px;
