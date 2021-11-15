@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import {globalContext} from '../../App'
 import test from '../../assests/test.jpg'
 
-export default function Mobilenavbar() {
+export default function Mobilenavbar(props) {
     const Value = useContext(globalContext)
     const [showSearch, setshowSearch] = useState(false)
     const [showcancel, setshowcancel] = useState(false)
@@ -34,15 +34,20 @@ export default function Mobilenavbar() {
                         <Cover onClick = {changeSearch}>
                             <Icon icon= 'search' />
                         </Cover>
-                        <Cover >
+                        <Cover onClick = {() => props.notification()} >
                             <Icon icon= 'bell' />
                             {Value.hasNotification?<Bage />:''}
                         </Cover>
-                        <Link to = 'auth/login'>
-                            <Cover>
-                                {Value.isLogin?<Profile src = {test} />:<Icon icon= 'user'></Icon>}
-                            </Cover>
-                        </Link>
+                        {Value.isLogin?
+                                <Cover onClick = {() =>props.extra()}>
+                                    <Profile src = {test} />
+                                </Cover>
+                            :
+                            <Link to = 'auth/login'>
+                                <Cover>
+                                    <Icon icon= 'user'></Icon>
+                                </Cover>
+                            </Link>}
                     </Box>
                 </>
             :

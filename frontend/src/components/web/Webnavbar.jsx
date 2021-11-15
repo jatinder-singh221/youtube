@@ -1,16 +1,18 @@
 import React, {useContext, useState} from 'react'
 import styled from 'styled-components'
 import FeatherIcon from 'feather-icons-react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import Logo from '../../assests/YouTube.svg'
 import {globalContext} from '../../App'
 import test from '../../assests/test.jpg'
 
 export default function Webnavbar(props) {
     const Value = useContext(globalContext)
+    const history = useNavigate()
 
     const [showsearchresult, setshowsearchresult] = useState(false)
     const [seachValue, setseachValue] = useState('')
+    const [searchresult, setsearchresult] = useState([])
 
     const changeresult = (e) =>{
         if (e.target.value === ''){
@@ -21,6 +23,18 @@ export default function Webnavbar(props) {
         }
     }
 
+    const submit =(e)=>{
+        e.preventDefault()
+        let form = new FormData()
+        form.append('search', seachValue)
+        history(`/result?search=${seachValue}`)
+    }
+
+    const search = (e)=>{
+        let id = e.target.id
+        setseachValue(searchresult[id].name)
+        history(`/result?search=${searchresult[id].name}`)
+    }
     return (
         <Header>
             <Box>
@@ -29,24 +43,35 @@ export default function Webnavbar(props) {
                 </Cover>
                 <Link to = '/'><Img src = {Logo} alt="logo" /></Link>
             </Box>
-                <Form>
+                <Form onSubmit={submit} method='get'>
                     <Conatiner>
                         <Search type="text" name="search" placeholder = 'Search' autoComplete = 'off' onKeyUp = {changeresult} value = {seachValue} onChange={(e) => setseachValue(e.target.value)}/>
-                        <Searchbutton icon='search' />
+                        {seachValue !== ''?
+                            <Searchbutton type='submit' >
+                                <FeatherIcon icon = 'search' />
+                            </Searchbutton>:
+                            <Searchbutton type='button' >
+                                <FeatherIcon icon = 'search' />
+                            </Searchbutton>}
                     </Conatiner>
-                        {showsearchresult?<Ul>
-                            <Li>hi</Li>
+                        {showsearchresult?
+                        <Ul>
+                            {searchresult.length !== 0?<>
+                                {searchresult.map((item, index) =>{
+                                return  <Li key={index} onClick={search} id ={index} value={item.name}>{item.name}</Li>
+                                })}
+                            </>:<Li>No Result founded</Li>}
                         </Ul>:''}
                 </Form>
             <Box>
-                <Cover>
+                <Cover onClick={()=>history('/upload')}>
                     <Icon icon = 'upload' />
                 </Cover>
-                <Cover>
+                <Cover onClick = {() => props.notification()}>
                     <Icon icon = 'bell' />
                     {Value.hasNotification ? <Bage /> : ''}
                 </Cover>
-                {Value.isLogin? <Profile src = {test} alt = 'userpfile'/>:
+                {Value.isLogin? <Profile src = {test} alt = 'userpfile' onClick = {props.extra }/>:
                 <Button to = '/auth/login'>Sign In</Button>}
             </Box>
         </Header>
@@ -144,9 +169,11 @@ export const Search = styled.input`
     padding-left: 1em;
 `
 
-const Searchbutton = styled(FeatherIcon)`
+const Searchbutton = styled.button`
     height: inherit;
     color:#fff;
+    border:none;
+    outline:none;
     background-color: #313131;
     padding:0 0.8em ;
     border-radius: 0 5px 5px 0;
