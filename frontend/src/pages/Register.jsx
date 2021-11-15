@@ -3,6 +3,7 @@ import Loading from '../components/Loading'
 import {TabletView, MobileOnlyView, BrowserView} from 'react-device-detect'
 
 const Webregister = React.lazy(()=>import('../components/web/Webregister'))
+const Mobileregister = React.lazy(()=>import('../components/mobile/Mobileregister'))
 
 export default function Login() {
     return (
@@ -14,7 +15,7 @@ export default function Login() {
                 <Webregister />
             </TabletView>
             <MobileOnlyView>
-                'mobile' 
+                <Mobileregister />
             </MobileOnlyView>
         </React.Suspense>
     )

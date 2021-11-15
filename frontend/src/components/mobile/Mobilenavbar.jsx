@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import styled from 'styled-components'
 import {Header, Img, Box, Cover, Icon, Search, Ul, Li, Bage, Profile} from '../web/Webnavbar'
 import Logo from '../../assests/YouTube.svg'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {globalContext} from '../../App'
 import test from '../../assests/test.jpg'
 
@@ -11,6 +11,8 @@ export default function Mobilenavbar(props) {
     const [showSearch, setshowSearch] = useState(false)
     const [showcancel, setshowcancel] = useState(false)
     const [seachValue, setseachValue] = useState('')
+    const history = useNavigate()
+    const [searchresult, setsearchresult] = useState([])
 
     const changeSearch = () =>{
         setshowSearch(!showSearch)
@@ -23,6 +25,12 @@ export default function Mobilenavbar(props) {
         else{
             setshowcancel(false)
         }
+    }
+
+    const search = (e)=>{
+        let id = e.target.id
+        setseachValue(searchresult[id].name)
+        history(`/result?search=${searchresult[id].name}`)
     }
 
     return (
@@ -59,12 +67,20 @@ export default function Mobilenavbar(props) {
                     </Cover>
                     <Changedsearch type="text" name="search" autoComplete='off' placeholder='Search' onKeyUp = {changeCancel} value = {seachValue} onChange = {(e) => setseachValue(e.target.value)} />
                     {showcancel?
-                    <Cover onClick = {() => setseachValue('')}>
+                    <Cover onClick = {() => {setseachValue('') 
+                        setshowcancel(false)}}>
                         <Icon icon= 'x'></Icon>
                     </Cover>:''}
                 </Div>
                 <Changedul>
-                    <Li>hi</Li>
+                    {searchresult.length !== 0?
+                        <>
+                        {searchresult.map((item, index) =>{
+                            return <Li key = {index}  id ={index} value={item.name} onClick = {search}>{item.name}</Li>
+                        })}
+                        </>
+                    :
+                    <Li>No Result founded</Li>}
                 </Changedul>
             </Form>}
         </Header>
@@ -94,6 +110,7 @@ const Changedsearch = styled(Search)`
     margin-right: 0.3em;
 `
 const Changedul = styled(Ul)`
+    padding-top:1em;
     width:100%;
     min-height:100vh;
 `

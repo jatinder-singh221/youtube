@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
-import {Cover, Form,Img, Inputcover, Input, Label, Button, Box, Forget, ALertp} from './Weblogin'
-import Google from '../../assests/YouTube.svg'
+import {Cover, Form} from './Mobilelogin'
+import {Img} from '../web/Webnavbar'
+import Logo from '../../assests/YouTube.svg'
+import {Inputcover, Input, Label, Button, ALertp, Forget, Box} from '../web/Weblogin'
 
-export default function Webregister() {
+
+export default function Mobileregiste() {
     const [first, setfirst] = useState('')
     const [last, setlast] = useState('')
     const [user, setuser] = useState('')
@@ -60,7 +63,7 @@ export default function Webregister() {
     return (
         <Cover>
             <Form onSubmit={Submit}>
-                <Img src={Google} alt="logo" />
+                <Img src={Logo} alt="logo" />
                 <Inputcover>
                     <Input type="text" id='f' name = 'first' autoComplete = 'off' autoFocus value={first} onChange={(e)=>setfirst(e.target.value)} onKeyDown={setActive} />
                     <Label htmlFor="f" id='lfirst'>First Name</Label>
