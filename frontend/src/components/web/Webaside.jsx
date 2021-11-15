@@ -41,6 +41,7 @@ const Nav = styled.nav`
     width: 224px;
     background-color: #202020;
     overflow: auto;
+    z-index: 0;
 
     .active{
         background-color: #303030;

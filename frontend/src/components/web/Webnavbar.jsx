@@ -87,7 +87,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 999;
+    z-index: 1;
 `
 
 export const Box = styled.div`

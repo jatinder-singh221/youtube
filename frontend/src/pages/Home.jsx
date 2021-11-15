@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import styled from 'styled-components'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
 import Loading from '../components/Loading'
 import Webaside from '../components/web/Webaside'
@@ -9,6 +10,7 @@ import Mobileoption from '../components/mobile/Mobileoption'
 const Webnavbar = React.lazy(() => import('../components/web/Webnavbar'))
 const Mobilenavbar = React.lazy(() => import('../components/mobile/Mobilenavbar'))
 const Mobileaside = React.lazy(() => import('../components/mobile/Mobileaside'))
+const Webhome = React.lazy(()=>import('../components/web/Webhome'))
 
 export default function Home() {
     const [showaside, setshowaside] = useState(true)
@@ -33,15 +35,19 @@ export default function Home() {
         <React.Suspense fallback = {<Loading />}>
             <BrowserView>
                 <Webnavbar showHide = {changeAside} notification = {changeNotification} extra ={changeOption}/>
-                {showaside?<Webaside />:''}
                 {showNotification?<Webnotification notification = {changeNotification} />:''}
                 {showoption?<Weboption extra ={changeOption} />:''}
+                <Grid>
+                    {showaside?<Webaside />:''}
+                <   Webhome />
+                </Grid>
             </BrowserView>
             <TabletView >
                 <Webnavbar  showHide = {changeAsidetab}  notification = {changeNotification} extra ={changeOption}/>
                 {tabAside?<Webaside />:''}
                 {showNotification?<Webnotification notification = {changeNotification}/>:''}
                 {showoption?<Weboption extra ={changeOption} />:''}
+                <Webhome />
             </TabletView>
             <MobileOnlyView>
                 <Mobilenavbar notification = {changeNotification} extra ={changeOption} />
@@ -52,3 +58,10 @@ export default function Home() {
         </React.Suspense>
     )
 }
+
+
+const Grid = styled.div`
+    display: flex;
+    width: 100%;
+    position: fixed;
+`
