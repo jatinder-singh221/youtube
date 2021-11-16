@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import Google from '../../assests/YouTube.svg'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 export default function Weblogin() {
+    const history = useNavigate()
     const [username, setusername] = useState('')
     const [password, setpassword] = useState('')
 
@@ -35,6 +37,17 @@ export default function Weblogin() {
         let form = new FormData()
         form.append('username',username)
         form.append('password',password)
+
+        axios.post('http://127.0.0.1:8000/backendauth/login/', form)
+        .then((response)=>{
+            console.log(response.data.Error);
+            if (response.data['Error']){
+                sethaserror(true)
+            }
+            else if (response.data['success']){
+                history('/')
+            }
+        })
     }
 
     return (

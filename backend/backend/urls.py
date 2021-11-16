@@ -7,7 +7,6 @@ from .view import Home
 
 urlpatterns = [
     path(config('ADMIN_URL'), admin.site.urls),
-    re_path('', Home.as_view()),
     path('backendabout/',include('userextended.urls')),
     path('backendauth/',include('access.urls')),
     path('backendads',include('ads.urls')),
@@ -24,5 +23,7 @@ urlpatterns = [
     path('backendcomments/', include('comments.urls')),
 ]
 
+
+urlpatterns += re_path(r'.*', Home.as_view()),
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,  document_root = settings.MEDIA_ROOT)
