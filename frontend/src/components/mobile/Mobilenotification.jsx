@@ -47,6 +47,7 @@ export const Container = styled.div`
     overflow: auto;
     background-color: #202020;
     padding-top: 60px;
+    z-index: 1;
 `
 export const Box = styled.div`
     display: flex;

@@ -11,6 +11,7 @@ const Webnavbar = React.lazy(() => import('../components/web/Webnavbar'))
 const Mobilenavbar = React.lazy(() => import('../components/mobile/Mobilenavbar'))
 const Mobileaside = React.lazy(() => import('../components/mobile/Mobileaside'))
 const Webhome = React.lazy(()=>import('../components/web/Webhome'))
+const Mobilehome = React.lazy(() => import('../components/mobile/Mobilehome'))
 
 export default function Home() {
     const [showaside, setshowaside] = useState(true)
@@ -39,21 +40,24 @@ export default function Home() {
                 {showoption?<Weboption extra ={changeOption} />:''}
                 <Grid>
                     {showaside?<Webaside />:''}
-                <   Webhome />
+                    <Webhome />
                 </Grid>
             </BrowserView>
             <TabletView >
                 <Webnavbar  showHide = {changeAsidetab}  notification = {changeNotification} extra ={changeOption}/>
-                {tabAside?<Webaside />:''}
                 {showNotification?<Webnotification notification = {changeNotification}/>:''}
                 {showoption?<Weboption extra ={changeOption} />:''}
-                <Webhome />
+                <Grid>
+                    {tabAside?<Webaside />:''}
+                    <Webhome />
+                </Grid>
             </TabletView>
             <MobileOnlyView>
                 <Mobilenavbar notification = {changeNotification} extra ={changeOption} />
                 <Mobileaside />
                 {showNotification?<Mobilenotification notification = {changeNotification}  />:''}
                 {showoption?<Mobileoption extra ={changeOption} />:''}
+                <Mobilehome />
             </MobileOnlyView>
         </React.Suspense>
     )
@@ -64,4 +68,6 @@ const Grid = styled.div`
     display: flex;
     width: 100%;
     position: fixed;
+    top: 0;
+    
 `

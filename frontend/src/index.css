@@ -16,20 +16,15 @@ code {
 
 ::-webkit-scrollbar {
   width: 10px;
-  z-index: 999;
 }
 
 ::-webkit-scrollbar-track {
   background: #181818;
-  z-index: 999;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #909090;
-  z-index: 999;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
-  z-index: 999;
-}
+  background: #555;}
