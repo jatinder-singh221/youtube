@@ -7,7 +7,7 @@ import Register from '../pages/Register'
 
 export default function Mainrouter() {
     return (
-        <Routes>
+        <Routes basename = '/static'>
             <Route path = '/' element={<Home />} />
             <Route path = '/auth/login' element={<Login />} />
             <Route path = '/auth/register' element={<Register />} />

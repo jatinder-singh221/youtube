@@ -1,10 +1,12 @@
-import React,{useEffect, useRef} from 'react'
+import React,{useEffect, useRef, useContext} from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import {Hr} from './Webnotification'
+import {globalContext} from '../../App'
 
 export default function Weboption(props) {
         const optionref = useRef()
+        const Value = useContext(globalContext)
 
         useEffect(() => {
             const optionchange = (e) =>{
@@ -20,11 +22,15 @@ export default function Weboption(props) {
 
     return (
         <Cover ref ={optionref}>
-            <Styledusername to = '/account'>Jatinder singh</Styledusername>
+            <Styledusername to = '/account'>{Value.username}</Styledusername>
             <Hr />
            <StyledLink to='/account'>Account</StyledLink>
-           <StyledLink to='/account'>Create Channel</StyledLink>
-           <StyledLink to='/account'>Upload Video</StyledLink>
+           {Value.isCreator || Value.isAdmins?
+                <>
+                    <StyledLink to='/account'>Create Channel</StyledLink>
+                    <StyledLink to='/account'>Upload Video</StyledLink>
+                </>:''
+            }
            <StyledLink to='/account'>Sign out</StyledLink>
            <Hr />
            <StyledLink to='/account'>Notifications</StyledLink> 

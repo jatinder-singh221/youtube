@@ -61,3 +61,51 @@ class user_logout(APIView):
         return Response(status = status.HTTP_100_CONTINUE)
 
 
+class state(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        
+        if user.is_anonymous:
+            data = {
+                'username':'unkown',
+                'isLogin':False,
+                'hasNotification':False,
+                'isCreator':False,
+                'isAdmn':False,
+            }
+            return Response({'state':data})
+
+        elif user.is_authenticated:
+            group = user.groups.all()[0]
+
+            if group.name == 'admins':
+                data = {
+                    'username':f'{user.first_name} {user.last_name}',
+                    'isLogin':True,
+                    'hasNotification':False,
+                    'isCreator':False,
+                    'isAdmn':True,
+                }
+                return Response({'state':data})
+
+            elif group.name == 'creators':
+                data = {
+                    'username':f'{user.first_name} {user.last_name}',
+                    'isLogin':True,
+                    'hasNotification':False,
+                    'isCreator':True,
+                    'isAdmn':False,
+                }
+                return Response({'state':data})
+
+            else:
+                data = {
+                    'username':f'{user.first_name} {user.last_name}',
+                    'isLogin':True,
+                    'hasNotification':False,
+                    'isCreator':False,
+                    'isAdmn':False,
+                }
+                return Response({'state':data})

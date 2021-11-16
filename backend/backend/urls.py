@@ -1,11 +1,13 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include, re_path
 from decouple import config
 from django.conf.urls.static import static
 from django.conf import settings
+from .view import Home
 
 urlpatterns = [
     path(config('ADMIN_URL'), admin.site.urls),
+    re_path('', Home.as_view()),
     path('backendabout/',include('userextended.urls')),
     path('backendauth/',include('access.urls')),
     path('backendads',include('ads.urls')),

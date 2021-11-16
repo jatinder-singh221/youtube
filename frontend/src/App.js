@@ -1,6 +1,7 @@
 import React, {useState, createContext, useEffect} from 'react'
 import Mainrouter from './Routers/Mainrouter'
 import Loader from './components/Loader'
+import axios from 'axios'
 
 const globalContext = createContext()
 
@@ -14,6 +15,15 @@ export default function App() {
   const [getUserdetails, setgetUserdetails] = useState(false)
 
   useEffect(() => {
+    axios.get('http://127.0.0.1:8000/backendauth/')
+    .then((response)=>{
+      let data = response.data.state
+      setusername(data.username)
+      setislogin(data.isLogin)
+      sethasnotification(data.hasNotification)
+      setiscreator(data.isCreator)
+      setisadmin(data.isAdmin)
+    })
     setTimeout(() => {
       setgetUserdetails(true)
     }, 1000);
@@ -21,7 +31,7 @@ export default function App() {
 
 
   const returnedValue = {
-    isLogin, hasNotification, isCreator, isAdmin
+    username, isLogin, hasNotification, isCreator, isAdmin
   }
 
   return (
