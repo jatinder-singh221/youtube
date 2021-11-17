@@ -1,16 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import {Cover, Form} from './Mobilelogin'
 import {Img} from '../web/Webnavbar'
 import Logo from '../../assests/YouTube.svg'
-import {Inputcover, Input, Label, Button, ALertp, Forget, Box} from '../web/Weblogin'
+import {Inputcover, Input, Label, Button,  Forget, Box} from '../web/Weblogin'
+import {Changedbox, Option} from '../web/Webregister'
+import axios from 'axios'
+import {globalContext} from '../../App'
+import Cookies from 'js-cookie'
+import {useNavigate} from 'react-router-dom'
 
 
 export default function Mobileregiste() {
+    const Value = useContext(globalContext)
+    const history = useNavigate()
     const [first, setfirst] = useState('')
     const [last, setlast] = useState('')
     const [user, setuser] = useState('')
     const [pass, setpass] = useState('')
-    const [haserror, sethaserror] = useState(false)
+    const [iserror, setiserror] = useState(false)
     const [error, seterror] = useState([])
 
     const setActive = (e) =>{
@@ -59,6 +66,25 @@ export default function Mobileregiste() {
         form.append('last_name',last)
         form.append('username',user)
         form.append('password',pass)
+        axios.post('http://127.0.0.1:8000/backendauth/register/', form,
+        {headers:{
+            'Accept':'application/json',
+            'Content-type':'application/json',
+            'X-CSRFToken':Cookies.get('csrftoken')
+        }}
+        )
+        .then((response) =>{
+            if (response.data.success === 'user'){
+                Value.updateState()
+                setTimeout(() => {
+                    history('/')
+                }, 1000);
+            }
+            else {
+                setiserror(true)
+                seterror(response.data)
+            }
+        })
     }
     return (
         <Cover>
@@ -82,12 +108,11 @@ export default function Mobileregiste() {
                 </Inputcover>
                 {first !== '' && last !== '' && user !== '' && pass !== ''?
                     <Button type = 'submit'>Register</Button>:<Button type = 'button' disabled>Register</Button>}
-                {haserror?<Box>
-                    {error.map((item, index) =>{
-                        return <ALertp key={index}>{item.value}</ALertp>
-                    }
-                    )}
-                </Box>:''}
+                {iserror?<Changedbox>
+                    {Object.keys(error).map((key) =>(
+                        <Option key={key}>{error[key]}</Option>
+                    ))}
+                </Changedbox>:''}
                 <Box>
                     <Forget to = '/auth/login'>Already Have Account</Forget>
                 </Box>

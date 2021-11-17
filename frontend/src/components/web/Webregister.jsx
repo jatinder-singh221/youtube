@@ -73,7 +73,6 @@ export default function Webregister() {
             }}
         )
         .then((response) =>{
-            console.log(response.data)
             if (response.data.success === 'user'){
                 Value.updateState()
                 setTimeout(() => {
@@ -123,11 +122,11 @@ export default function Webregister() {
     )
 }
 
-const Changedbox = styled(Box)`
+export const Changedbox = styled(Box)`
     flex-direction: column;
 `
 
-const Option = styled.option`
+export const Option = styled.option`
     color:#ff0000;
     border: 1px solid #ff0000;
     padding:0.5em 0.7em;

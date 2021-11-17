@@ -10,10 +10,9 @@ import Mobileoption from '../components/mobile/Mobileoption'
 const Webnavbar = React.lazy(() => import('../components/web/Webnavbar'))
 const Mobilenavbar = React.lazy(() => import('../components/mobile/Mobilenavbar'))
 const Mobileaside = React.lazy(() => import('../components/mobile/Mobileaside'))
-const Webhome = React.lazy(()=>import('../components/web/Webhome'))
-const Mobilehome = React.lazy(() => import('../components/mobile/Mobilehome'))
 
-export default function Home() {
+
+export default function Home(props) {
     const [showaside, setshowaside] = useState(true)
     const [tabAside, settabAside] = useState(false)
     const [showNotification, setshowNotification] = useState(false)
@@ -40,7 +39,7 @@ export default function Home() {
                 {showoption?<Weboption extra ={changeOption} />:''}
                 <Grid>
                     {showaside?<Webaside />:''}
-                    <Webhome />
+                    {props.component}
                 </Grid>
             </BrowserView>
             <TabletView >
@@ -49,7 +48,7 @@ export default function Home() {
                 {showoption?<Weboption extra ={changeOption} />:''}
                 <Grid>
                     {tabAside?<Webaside />:''}
-                    <Webhome />
+                    {props.component}
                 </Grid>
             </TabletView>
             <MobileOnlyView>
@@ -57,7 +56,7 @@ export default function Home() {
                 <Mobileaside />
                 {showNotification?<Mobilenotification notification = {changeNotification}  />:''}
                 {showoption?<Mobileoption extra ={changeOption} />:''}
-                <Mobilehome />
+                {props.component}
             </MobileOnlyView>
         </React.Suspense>
     )

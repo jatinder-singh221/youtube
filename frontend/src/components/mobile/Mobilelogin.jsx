@@ -5,6 +5,8 @@ import Logo from '../../assests/YouTube.svg'
 import { globalContext } from '../../App'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import CSRF from '../CSRF'
+import Cookies from 'js-cookie'
 import {Inputcover, Input, Label, Button, ALertp, Forget, New, Box} from '../web/Weblogin'
 
 export default function Mobilelogin() {
@@ -42,9 +44,14 @@ export default function Mobilelogin() {
         form.append('username',username)
         form.append('password',password)
 
-        axios.post('http://127.0.0.1:8000/backendauth/login/', form)
+        axios.post('http://127.0.0.1:8000/backendauth/login/', form,{
+            headers:{
+                'Accept':'application/json',
+                'Content-type':'application/json',
+                'X-CSRFToken':Cookies.get('csrftoken')
+            }
+        })
         .then((response)=>{
-            console.log(response.data.Error);
             if (response.data['Error']){
                 sethaserror(true)
             }
@@ -60,6 +67,7 @@ export default function Mobilelogin() {
     return (
         <Cover>
             <Form onSubmit={Submit}>
+                <CSRF />
                 <Img src={Logo} alt="google logo" />
                 <Inputcover>
                     <Input type="email" id='email' name = 'email' autoComplete = 'off' autoFocus  value = {username} onChange ={(e) => setusername(e.target.value)} onKeyDown ={setActive}/>

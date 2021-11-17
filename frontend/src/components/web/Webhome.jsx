@@ -31,7 +31,7 @@ export default function Webhome() {
     )
 }
 
-const Container = styled.main`
+export const Container = styled.main`
     flex: 1;
     height:90vh ;
     margin-top: 66px;
