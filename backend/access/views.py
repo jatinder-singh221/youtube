@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 
-# @method_decorator(csrf_protect, name = 'dispatch')
+@method_decorator(csrf_protect, name = 'dispatch')
 class user_login(APIView):
     permission_classes = [permissions.AllowAny]
 
@@ -39,12 +39,9 @@ class user_register(APIView):
         posted_data = registration_serializer(data = request.data)
 
         if posted_data.is_valid():
-            posted_data.save()
-            username = posted_data.validated_data.get('username')
-            password = posted_data.validated_data.get('password')
-            user = authenticate(username = username, password = password)
+            user = posted_data.save()
             login(request, user)
-            return Response(status = status.HTTP_201_CREATED)
+            return Response({'success':'user'})
 
         else:
             return Response(posted_data.errors)

@@ -3,7 +3,9 @@ import Google from '../../assests/YouTube.svg'
 import styled from 'styled-components'
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import CSRF from '../CSRF'
 import {globalContext} from '../../App'
+import Cookies from 'js-cookie'
 
 export default function Weblogin() {
     const history = useNavigate()
@@ -40,9 +42,14 @@ export default function Weblogin() {
         form.append('username',username)
         form.append('password',password)
 
-        axios.post('http://127.0.0.1:8000/backendauth/login/', form)
+        axios.post('http://127.0.0.1:8000/backendauth/login/', form,{
+            headers:{
+                'Accept':'application/json',
+                'Content-type':'application/json',
+                'X-CSRFToken':Cookies.get('csrftoken')
+            }
+        })
         .then((response)=>{
-            console.log(response.data.Error);
             if (response.data['Error']){
                 sethaserror(true)
             }
@@ -58,6 +65,7 @@ export default function Weblogin() {
     return (
         <Cover>
             <Form onSubmit={Submit}>
+                <CSRF />
                 <Img src={Google} alt="google logo" />
                 <Inputcover>
                     <Input type="email" id='email' name = 'email' autoComplete = 'off' autoFocus  value = {username} onChange ={(e) => setusername(e.target.value)} onKeyDown ={setActive}/>
