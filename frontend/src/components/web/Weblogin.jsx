@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import Google from '../../assests/YouTube.svg'
 import styled from 'styled-components'
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import {globalContext} from '../../App'
 
 export default function Weblogin() {
     const history = useNavigate()
+    const Value = useContext(globalContext)
     const [username, setusername] = useState('')
     const [password, setpassword] = useState('')
 
@@ -45,7 +47,10 @@ export default function Weblogin() {
                 sethaserror(true)
             }
             else if (response.data['success']){
-                history('/')
+                Value.updateState()
+                setTimeout(() => {
+                    history('/')
+                }, 1000);
             }
         })
     }

@@ -53,11 +53,10 @@ class user_register(APIView):
 class user_logout(APIView):
     
     def get(self, request, *args, **kwargs):
-
-        if request.user.is_authenticated:
+        print(self.request.user.is_authenticated)
+        if self.request.user.is_authenticated:
             logout(request)
-
-        return Response(status = status.HTTP_100_CONTINUE)
+            return Response({'sucess':'logout'})
 
 
 class state(APIView):

@@ -17,7 +17,7 @@ export default function MObileoption(props) {
            <StyledLink to='/account'>Account</StyledLink>
            <StyledLink to='/account'>Create Channel</StyledLink>
            <StyledLink to='/account'>Upload Video</StyledLink>
-           <StyledLink to='/account'>Sign out</StyledLink>
+           <StyledLink to='/auth/logout'>Sign out</StyledLink>
            <Hr />
            <StyledLink to='/account'>Notifications</StyledLink> 
            <StyledLink to='/account'>Library</StyledLink> 

@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {Hr} from './Webnotification'
 import {globalContext} from '../../App'
 
+
 export default function Weboption(props) {
         const optionref = useRef()
         const Value = useContext(globalContext)
@@ -31,7 +32,7 @@ export default function Weboption(props) {
                     <StyledLink to='/account'>Upload Video</StyledLink>
                 </>:''
             }
-           <StyledLink to='/account'>Sign out</StyledLink>
+           <StyledLink to='/auth/logout'>Sign out</StyledLink>
            <Hr />
            <StyledLink to='/account'>Notifications</StyledLink> 
            <StyledLink to='/account'>Library</StyledLink> 
@@ -52,6 +53,7 @@ const Cover = styled.div`
     width: 200px;
     background-color: #202020;
     border-radius: 5px 0 0 5px;
+    z-index: 1;
 `
 export const Styledusername = styled(Link)`
     text-decoration: none;

@@ -14,24 +14,32 @@ export default function App() {
   const [isAdmin, setisadmin] = useState(false)
   const [getUserdetails, setgetUserdetails] = useState(false)
 
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8000/backendauth/')
-    .then((response)=>{
-      let data = response.data.state
-      setusername(data.username)
-      setislogin(data.isLogin)
-      sethasnotification(data.hasNotification)
-      setiscreator(data.isCreator)
-      setisadmin(data.isAdmin)
-    })
+  const updateState = () =>{
+      axios.get('http://127.0.0.1:8000/backendauth/')
+      .then((response)=>{
+        let data = response.data.state
+        setusername(data.username)
+        setislogin(data.isLogin)
+        sethasnotification(data.hasNotification)
+        setiscreator(data.isCreator)
+        setisadmin(data.isAdmin)
+      })
+  }
+
+  const getState = (set) =>{
     setTimeout(() => {
       setgetUserdetails(true)
     }, 1000);
+  }
+
+  useEffect(() => {
+    updateState()
+    getState()
   }, [])
 
 
   const returnedValue = {
-    username, isLogin, hasNotification, isCreator, isAdmin
+    username, isLogin, hasNotification, isCreator, isAdmin, updateState, getState
   }
 
   return (

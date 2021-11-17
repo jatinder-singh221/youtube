@@ -1,12 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import styled from 'styled-components'
 import {Img} from '../web/Webnavbar'
 import Logo from '../../assests/YouTube.svg'
+import { globalContext } from '../../App'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import {Inputcover, Input, Label, Button, ALertp, Forget, New, Box} from '../web/Weblogin'
 
 export default function Mobilelogin() {
     const [username, setusername] = useState('')
     const [password, setpassword] = useState('')
+    const Value = useContext(globalContext)
+    const history = useNavigate()
 
     const [haserror, sethaserror] = useState(false)
 
@@ -36,6 +41,20 @@ export default function Mobilelogin() {
         let form = new FormData()
         form.append('username',username)
         form.append('password',password)
+
+        axios.post('http://127.0.0.1:8000/backendauth/login/', form)
+        .then((response)=>{
+            console.log(response.data.Error);
+            if (response.data['Error']){
+                sethaserror(true)
+            }
+            else if (response.data['success']){
+                Value.updateState()
+                setTimeout(() => {
+                    history('/')
+                }, 1000);
+            }
+        })
     }
 
     return (
