@@ -1,10 +1,32 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import {Cover, Icon} from '../web/Webnavbar'
+import axios from 'axios'
 
 export default function Webhome() {
     const [videos, setvideos] = useState([])
+    const getdattime = (value) =>{
+        let getdate = new Date(value)
+        console.log(getdate);
+        let currentdate = new Date()
+        var datetime = `
+            ${currentdate.getFullYear()}
+            ${currentdate.getMonth()}
+            ${currentdate.getDate()}
+            ${currentdate.getHours()}
+            ${currentdate.getMinutes()}
+            ${currentdate.getSeconds()}
+        `
+
+            console.log(datetime);
+    }
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/backendvideo/')
+        .then((response) =>{
+            setvideos(response.data)
+        })
+    }, [])
     return (
         <Container>
             {videos.map((items, index)=>{
@@ -15,13 +37,13 @@ export default function Webhome() {
                             <Icon icon = 'play' />
                         </Cover>
                     </Over>
-                    <Img src={items.video_tumbnail} alt="" />
+                    <Img src={items.video_thumb_nail} alt="thumb" />
                     <Box>
-                        <ChannelLogo src={items.channel} alt="" />
                         <P>{items.video_name}</P>
                     </Box>
                     <Desc>{items.video_description}</Desc>
-                    <Desc>{items.time}</Desc>
+                    {/* <Desc>{date(items.upload_time)}</Desc> */}
+                    <Desc onLoad={getdattime(items.upload_time)}>{items.upload_time}</Desc>
                 </StyledLink>
             })
 
@@ -96,19 +118,12 @@ export const Box = styled.div`
     margin:0.3em 0;
 `
 
-export const ChannelLogo = styled.img`
-    width: 30px;
-    height: 30px;
-    overflow: hidden;
-    border-radius: 20px;
-    margin-right:0.7em;
-    margin-left: 0.7em;
-`
 export const P = styled.p`
     color:#fff;
     padding:0.1em 0;
     margin: 0;
     font-size: 18px;
+    padding-left: 3em;
 `
 export const Desc = styled.p`
     color:#909090;

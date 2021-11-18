@@ -1,4 +1,4 @@
-from rest_framework import views
+from rest_framework import permissions
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import GenericAPIView
 from rest_framework.views import APIView
@@ -94,3 +94,10 @@ class video_view(APIView):
         videos = video.objects.get(id = pk)
         view = histroy.objects.select_related('video').filter(video = videos)
         return Response({'view':view.count()})
+
+class all_video(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        data = video_serializer(video.objects.all().defer('video'), many = True)
+        return Response(data.data)
