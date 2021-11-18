@@ -3,20 +3,20 @@ import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
 import Loading from '../components/Loading'
 import Home from './Home'
 
-const Webexplore = React.lazy(()=>import('../components/web/Webexplore'))
-const Mobileexplore = React.lazy(()=>import('../components/mobile/Mobileexpolre'))
+const Websub = React.lazy(()=>import('../components/web/Websub'))
+const Mobilesub = React.lazy(()=>import('../components/mobile/Mobilesub'))
 
-export default function Explore() {
+export default function Subscription() {
     return (
         <React.Suspense fallback = {<Loading />}>
             <BrowserView>
-                <Home component = {<Webexplore />} />
+                <Home component = {<Websub />} />
             </BrowserView>
             <TabletView>
-                <Home component = {<Webexplore />} />
+                <Home component = {<Websub />} />
             </TabletView>
             <MobileOnlyView>
-                <Home component = {<Mobileexplore />} />
+                <Home component = {<Mobilesub />} />
             </MobileOnlyView>
         </React.Suspense>
     )
