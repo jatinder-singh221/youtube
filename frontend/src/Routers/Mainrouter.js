@@ -8,6 +8,7 @@ import Pravite from './Pravite'
 import Logout from '../components/Logout'
 import Explore from '../pages/Explore'
 import Subscription from '../pages/Subscription'
+import Libraray from '../pages/Libraray'
 
 
 export default function Mainrouter() {
@@ -29,6 +30,11 @@ export default function Mainrouter() {
             <Route path = '/subscription' element={
                 <Pravite bool={true} where = '/auth/login'>
                     <Subscription />
+                </Pravite>
+            } />
+            <Route path = '/library' element={
+                <Pravite bool={true} where = '/auth/login'>
+                    <Libraray />
                 </Pravite>
             } />
             <Route path = '/not-founded' element={<Notfounded />} />

@@ -6,3 +6,4 @@ class library_serializer(serializers.ModelSerializer):
     class Meta:
         model = library
         fields = "__all__"
+        depth = 2
