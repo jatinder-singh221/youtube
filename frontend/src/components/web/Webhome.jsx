@@ -4,23 +4,10 @@ import {Link} from 'react-router-dom'
 import {Cover, Icon} from '../web/Webnavbar'
 import axios from 'axios'
 
+
+
 export default function Webhome() {
     const [videos, setvideos] = useState([])
-    const getdattime = (value) =>{
-        let getdate = new Date(value)
-        console.log(getdate);
-        let currentdate = new Date()
-        var datetime = `
-            ${currentdate.getFullYear()}
-            ${currentdate.getMonth()}
-            ${currentdate.getDate()}
-            ${currentdate.getHours()}
-            ${currentdate.getMinutes()}
-            ${currentdate.getSeconds()}
-        `
-
-            console.log(datetime);
-    }
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/backendvideo/')
         .then((response) =>{
@@ -39,11 +26,11 @@ export default function Webhome() {
                     </Over>
                     <Img src={items.video_thumb_nail} alt="thumb" />
                     <Box>
+                        <ChannelLogo src={items.channel.channel_picture} alt="cover" />
                         <P>{items.video_name}</P>
                     </Box>
                     <Desc>{items.video_description}</Desc>
-                    {/* <Desc>{date(items.upload_time)}</Desc> */}
-                    <Desc onLoad={getdattime(items.upload_time)}>{items.upload_time}</Desc>
+                    <Desc>{new Date (items.upload_time).toLocaleString()}</Desc>
                 </StyledLink>
             })
 
@@ -94,6 +81,7 @@ export const StyledLink = styled(Link)`
     box-sizing:border-box;
     margin-top: 0;
     position: relative;
+    min-width: 310px;
 
     &:hover{
         box-shadow: 0 8px 15px #202020;
@@ -123,7 +111,6 @@ export const P = styled.p`
     padding:0.1em 0;
     margin: 0;
     font-size: 18px;
-    padding-left: 3em;
 `
 export const Desc = styled.p`
     color:#909090;
@@ -131,4 +118,11 @@ export const Desc = styled.p`
     padding-left: 3em;
     margin: 0;
     font-size: 16px;
+`
+export const ChannelLogo = styled.img`
+    width:30px;
+    height:30px;
+    border-radius: 30px;
+    margin:0 0.5em ;
+    border:solid 1px #303030;
 `

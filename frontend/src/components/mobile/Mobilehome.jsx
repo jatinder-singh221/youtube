@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import {Desc, P, Box, Img, StyledLink, Over} from '../web/Webhome'
+import {Desc, P, Box, Img, StyledLink, Over, ChannelLogo} from '../web/Webhome'
 import {Cover, Icon} from '../web/Webnavbar'
 import axios from 'axios'
 
@@ -9,10 +9,9 @@ export default function Mobilehome() {
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/backendvideo/')
         .then((response) =>{
-            console.log(response.data);
             setvideos(response.data)
         })
-    }, [])
+    }, [])   
     return (
         <Container>
             {videos.map((items, index)=>{
@@ -25,10 +24,11 @@ export default function Mobilehome() {
                     </Over>
                     <Img src={items.video_thumb_nail} alt="logo" />
                     <Box>
+                        <ChannelLogo src={items.channel.channel_picture} alt="logo" />
                         <P>{items.video_name}</P>
                     </Box>
                     <Desc>{items.video_description}</Desc>
-                    <Desc>{items.upload_time}</Desc>
+                    <Desc>{new Date (items.upload_time).toLocaleString()}</Desc>
                 </StyledLink>
             })
 

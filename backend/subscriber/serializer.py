@@ -5,5 +5,6 @@ from .models import subscriber
 class subscriber_serializer(serializers.ModelSerializer):
     class Meta:
        model = subscriber
-       exclude = ['id']
+       fields = ['user', 'channel'] 
+       depth = 1
         

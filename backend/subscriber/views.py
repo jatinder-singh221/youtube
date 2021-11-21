@@ -59,3 +59,9 @@ class subscriber_add_remove(APIView):
 class adminsubscriber(viewsets.ModelViewSet):
     queryset = subscriber.objects.all()
     serializer_class = subscriber_serializer
+
+class Allsubscriber(APIView):
+
+    def get(self, request, *args, **kwargs):
+        sub = subscriber_serializer(subscriber.objects.select_related('user').filter(user = self.request.user), many = True)
+        return Response(sub.data)
