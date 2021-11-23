@@ -6,3 +6,4 @@ class history_serializer(serializers.ModelSerializer):
     class Meta:
         model = histroy
         fields = '__all__'
+        depth = 2

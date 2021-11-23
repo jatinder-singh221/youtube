@@ -11,7 +11,7 @@ export default function Webaside(props) {
             <Styledlink to = '/subscription'><Icon icon='briefcase' /> Subscription</Styledlink>
             <Hr />
             <Styledlink to = '/library'><Icon icon='book' /> Library</Styledlink>
-            <Styledlink to = '/histroy'><Icon icon='clock' /> History</Styledlink>
+            <Styledlink to = '/history'><Icon icon='clock' /> History</Styledlink>
             <Styledlink to = '/watch-later'><Icon icon='disc' /> Watch later</Styledlink>
             <Styledlink to = '/liked'><Icon icon='thumbs-up' /> Liked</Styledlink>
             <Hr />

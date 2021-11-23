@@ -9,6 +9,7 @@ import Logout from '../components/Logout'
 import Explore from '../pages/Explore'
 import Subscription from '../pages/Subscription'
 import Libraray from '../pages/Libraray'
+import History from '../pages/History'
 
 
 export default function Mainrouter() {
@@ -33,6 +34,56 @@ export default function Mainrouter() {
                 </Pravite>
             } />
             <Route path = '/library' element={
+                <Pravite bool={true} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/history' element={
+                <Pravite bool={true} where = '/auth/login'>
+                    <History />
+                </Pravite>
+            } />
+            <Route path = '/watch-later' element={
+                <Pravite bool={true} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/liked' element={
+                <Pravite bool={true} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/catagories/trending' element={
+                <Pravite bool={false} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/catagories/movies' element={
+                <Pravite bool={false} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/catagories/games' element={
+                <Pravite bool={false} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/catagories/live' element={
+                <Pravite bool={false} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/help' element={
+                <Pravite bool={false} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/feedback' element={
+                <Pravite bool={true} where = '/auth/login'>
+                    <Libraray />
+                </Pravite>
+            } />
+            <Route path = '/settings' element={
                 <Pravite bool={true} where = '/auth/login'>
                     <Libraray />
                 </Pravite>
