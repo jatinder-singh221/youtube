@@ -51,7 +51,7 @@ export default function Mobilenavbar(props) {
                                     <Profile src = {test} />
                                 </Cover>
                             :
-                            <Link to = 'auth/login'>
+                            <Link to = '/auth/login'>
                                 <Cover>
                                     <Icon icon= 'user'></Icon>
                                 </Cover>

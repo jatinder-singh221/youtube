@@ -49,7 +49,7 @@ const Nav = styled.nav`
     }
 `
 
-const Styledlink = styled(NavLink)`
+export const Styledlink = styled(NavLink)`
     display: flex;
     align-items: center;
     width: 100%;
