@@ -63,3 +63,10 @@ class add_remove_dislike(APIView):
             like.save()             
 
         return Response(status = status.HTTP_202_ACCEPTED)
+
+class Getalllikedvideo(APIView):
+
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        query = like_dislike_serializer(like_dislike.objects.select_related('user').filter(user = user, is_like = True), many = True)
+        return Response(query.data)

@@ -6,3 +6,4 @@ class like_dislike_serializer(serializers.ModelSerializer):
     class Meta:
         model = like_dislike
         fields = '__all__'
+        depth = 2

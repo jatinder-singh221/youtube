@@ -10,6 +10,8 @@ import Explore from '../pages/Explore'
 import Subscription from '../pages/Subscription'
 import Libraray from '../pages/Libraray'
 import History from '../pages/History'
+import Watch from '../pages/Watch'
+import Like from '../pages/Like'
 
 
 export default function Mainrouter() {
@@ -45,12 +47,12 @@ export default function Mainrouter() {
             } />
             <Route path = '/watch-later' element={
                 <Pravite bool={true} where = '/auth/login'>
-                    <Libraray />
+                    <Watch />
                 </Pravite>
             } />
             <Route path = '/liked' element={
                 <Pravite bool={true} where = '/auth/login'>
-                    <Libraray />
+                    <Like />
                 </Pravite>
             } />
             <Route path = '/catagories/trending' element={
