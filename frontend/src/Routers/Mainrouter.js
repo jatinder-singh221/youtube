@@ -12,6 +12,8 @@ import Libraray from '../pages/Libraray'
 import History from '../pages/History'
 import Watch from '../pages/Watch'
 import Like from '../pages/Like'
+import Catagory from '../pages/Catagory'
+import Settings from '../pages/Settings'
 
 
 export default function Mainrouter() {
@@ -55,26 +57,7 @@ export default function Mainrouter() {
                     <Like />
                 </Pravite>
             } />
-            <Route path = '/catagories/trending' element={
-                <Pravite bool={false} where = '/auth/login'>
-                    <Libraray />
-                </Pravite>
-            } />
-            <Route path = '/catagories/movies' element={
-                <Pravite bool={false} where = '/auth/login'>
-                    <Libraray />
-                </Pravite>
-            } />
-            <Route path = '/catagories/games' element={
-                <Pravite bool={false} where = '/auth/login'>
-                    <Libraray />
-                </Pravite>
-            } />
-            <Route path = '/catagories/live' element={
-                <Pravite bool={false} where = '/auth/login'>
-                    <Libraray />
-                </Pravite>
-            } />
+            <Route path = '/explore/:name' element={<Catagory />} />
             <Route path = '/help' element={
                 <Pravite bool={false} where = '/auth/login'>
                     <Libraray />
@@ -86,8 +69,8 @@ export default function Mainrouter() {
                 </Pravite>
             } />
             <Route path = '/settings' element={
-                <Pravite bool={true} where = '/auth/login'>
-                    <Libraray />
+                <Pravite bool={false} where = '/auth/login'>
+                    <Settings />
                 </Pravite>
             } />
             <Route path = '/not-founded' element={<Notfounded />} />

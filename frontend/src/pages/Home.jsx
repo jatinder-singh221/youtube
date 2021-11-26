@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
 import Loading from '../components/Loading'
-import Webaside from '../components/web/Webaside'
+import {WebAside} from '../components/web/Webaside'
 import Webnotification from '../components/web/Webnotification'
 import Weboption from '../components/web/Weboption'
 import Mobilenotification from '../components/mobile/Mobilenotification'
@@ -38,7 +38,7 @@ export default function Home(props) {
                 {showNotification?<Webnotification notification = {changeNotification} />:''}
                 {showoption?<Weboption extra ={changeOption} />:''}
                 <Grid>
-                    {showaside?<Webaside />:''}
+                    {showaside?<WebAside />:''}
                     {props.component}
                 </Grid>
             </BrowserView>
@@ -47,7 +47,7 @@ export default function Home(props) {
                 {showNotification?<Webnotification notification = {changeNotification}/>:''}
                 {showoption?<Weboption extra ={changeOption} />:''}
                 <Grid>
-                    {tabAside?<Webaside />:''}
+                    {tabAside?<WebAside />:''}
                     {props.component}
                 </Grid>
             </TabletView>

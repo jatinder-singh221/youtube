@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {NavLink, Link} from 'react-router-dom'
 import FeatherIcon from 'feather-icons-react'
 
-export default function Webaside(props) {
+function Webaside(props) {
     return (
         <Nav>
             <Styledlink to = '/' ><Icon icon='home' /> Home</Styledlink>
@@ -16,7 +16,7 @@ export default function Webaside(props) {
             <Styledlink to = '/liked'><Icon icon='thumbs-up' /> Liked</Styledlink>
             <Hr />
             <P>More From YouTube</P>
-            <Styledlink to = '/youtubepre'><Icon icon='youtube' /> Premium</Styledlink>
+            <Styledlink to = '/premium' onClick={() => window.location.href = 'https://www.youtube.com/premium'}><Icon icon='youtube' /> Premium</Styledlink>
             <Styledlink to = '/explore/trending'><Icon icon='activity' /> Trending</Styledlink>
             <Styledlink to = '/explore/movies'><Icon icon='film' /> Movies</Styledlink>
             <Styledlink to = '/explore/game'><Icon icon='box' /> Games</Styledlink>
@@ -34,6 +34,8 @@ export default function Webaside(props) {
         </Nav>
     )
 }
+
+export const WebAside = React.memo(Webaside)
 
 const Nav = styled.nav`
     padding-top: 60px;
