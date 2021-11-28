@@ -10,13 +10,13 @@ export default function Explore() {
     return (
         <React.Suspense fallback = {<Loading />}>
             <BrowserView>
-                <Home component = {<Webhistory />} />
+                <Webhistory />
             </BrowserView>
             <TabletView>
-                <Home component = {<Webhistory />} />
+                <Webhistory />
             </TabletView>
             <MobileOnlyView>
-                {/* <Home component = {<p>hii<p />} /> */}
+                {/* <p>hii<p />} /> */}
             </MobileOnlyView>
         </React.Suspense>
     )

@@ -1,8 +1,7 @@
 import React,{useState} from 'react'
-import styled from 'styled-components'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
 import Loading from '../components/Loading'
-import {WebAside} from '../components/web/Webaside'
+import Webaside from '../components/web/Webaside'
 import Webnotification from '../components/web/Webnotification'
 import Weboption from '../components/web/Weboption'
 import Mobilenotification from '../components/mobile/Mobilenotification'
@@ -20,9 +19,12 @@ export default function Home(props) {
 
     const changeAside = () =>{
         setshowaside(!showaside)
+        props.what(!showaside)
     }
+
     const changeAsidetab = () =>{
         settabAside(!tabAside)
+        props.what(!tabAside)
     }
     const changeNotification = () =>{
         setshowNotification(!showNotification)
@@ -37,36 +39,20 @@ export default function Home(props) {
                 <Webnavbar showHide = {changeAside} notification = {changeNotification} extra ={changeOption}/>
                 {showNotification?<Webnotification notification = {changeNotification} />:''}
                 {showoption?<Weboption extra ={changeOption} />:''}
-                <Grid>
-                    {showaside?<WebAside />:''}
-                    {props.component}
-                </Grid>
+                {showaside?<Webaside  />:''}
             </BrowserView>
             <TabletView >
                 <Webnavbar  showHide = {changeAsidetab}  notification = {changeNotification} extra ={changeOption}/>
                 {showNotification?<Webnotification notification = {changeNotification}/>:''}
                 {showoption?<Weboption extra ={changeOption} />:''}
-                <Grid>
-                    {tabAside?<WebAside />:''}
-                    {props.component}
-                </Grid>
+                    {tabAside?<Webaside  />:''}
             </TabletView>
             <MobileOnlyView>
                 <Mobilenavbar notification = {changeNotification} extra ={changeOption} />
                 <Mobileaside />
                 {showNotification?<Mobilenotification notification = {changeNotification}  />:''}
                 {showoption?<Mobileoption extra ={changeOption} />:''}
-                {props.component}
             </MobileOnlyView>
         </React.Suspense>
     )
 }
-
-
-const Grid = styled.div`
-    display: flex;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    
-`

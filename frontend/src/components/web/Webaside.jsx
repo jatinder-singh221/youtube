@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import {NavLink, Link} from 'react-router-dom'
 import FeatherIcon from 'feather-icons-react'
 
-function Webaside(props) {
+export default function Webaside(props) {
     return (
-        <Nav>
+        <Nav >
             <Styledlink to = '/' ><Icon icon='home' /> Home</Styledlink>
             <Styledlink to = '/explore'><Icon icon='compass' /> Explore</Styledlink>
             <Styledlink to = '/subscription'><Icon icon='briefcase' /> Subscription</Styledlink>
@@ -22,7 +22,7 @@ function Webaside(props) {
             <Styledlink to = '/explore/game'><Icon icon='box' /> Games</Styledlink>
             <Styledlink to = '/explore/live'><Icon icon='bar-chart-2' /> Live</Styledlink>
             <Hr />
-            <Styledlink to = '/explore/Channels'><Icon icon='plus-circle' /> All channels</Styledlink>
+            <Styledlink to = '/channels'><Icon icon='plus-circle' /> All channels</Styledlink>
             <Hr />
             <Styledlink to = '/settings'><Icon icon='settings' /> Settings</Styledlink>
             <Styledlink to = '/help'><Icon icon='help-circle' /> Help</Styledlink>
@@ -35,7 +35,6 @@ function Webaside(props) {
     )
 }
 
-export const WebAside = React.memo(Webaside)
 
 const Nav = styled.nav`
     padding-top: 60px;
@@ -44,7 +43,7 @@ const Nav = styled.nav`
     background-color: #202020;
     overflow: auto;
     z-index: 1;
-    /* position: fixed; */
+    position: fixed;
 
     .active{
         background-color: #303030;

@@ -1,6 +1,5 @@
 import React from 'react'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
-import Home from './Home'
 import Websettings from '../components/web/Websettings'
 
 
@@ -8,13 +7,13 @@ export default function Watch() {
     return (
         <>
             <BrowserView>
-                <Home component = {<Websettings />} />
+                <Websettings />
             </BrowserView>
             <TabletView>
-                <Home component = {<Websettings />} />
+                <Websettings />
             </TabletView>
             <MobileOnlyView>
-                {/* <Home component = {<p>hii<p />} /> */}
+                {/* p>hii<p />} /> */}
             </MobileOnlyView>
         </>
     )

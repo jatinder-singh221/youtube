@@ -35,6 +35,7 @@ export default function Webnavbar(props) {
         setseachValue(searchresult[id].name)
         history(`/result?search=${searchresult[id].name}`)
     }
+
     return (
         <Header>
             <Box>

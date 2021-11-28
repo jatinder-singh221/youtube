@@ -41,11 +41,10 @@ export default function Webhome() {
 }
 
 export const Container = styled.main`
-    flex: 1;
     height:90vh ;
-    margin-top: 66px;
+    margin-top: 65px;
     background-color: transparent;
-    overflow-y: auto;
+    overflow:hidden;
     display: grid;
     grid-gap:10px;
     grid-template-columns: auto auto auto auto;
@@ -54,7 +53,7 @@ export const Container = styled.main`
     scroll-behavior: smooth;
 
     @media(max-width:1024px){
-        grid-template-columns: auto auto auto  ;
+        grid-template-columns: auto auto ;
     }
 `
 

@@ -10,13 +10,13 @@ export default function Watch() {
     return (
         <React.Suspense fallback = {<Loading />}>
             <BrowserView>
-                <Home component = {<Webwatchlater />} />
+                <Webwatchlater />
             </BrowserView>
             <TabletView>
-                <Home component = {<Webwatchlater />} />
+                <Webwatchlater />
             </TabletView>
             <MobileOnlyView>
-                {/* <Home component = {<p>hii<p />} /> */}
+                {/* <p>hii<p />} /> */}
             </MobileOnlyView>
         </React.Suspense>
     )

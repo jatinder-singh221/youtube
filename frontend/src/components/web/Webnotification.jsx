@@ -47,6 +47,7 @@ const Cover = styled.div`
     right: 0;
     background-color: #212121;
     border-radius: 5px 0 0 5px;
+    z-index: 1;
 
     @media(max-width:1024px){
         width: 50%;

@@ -15,9 +15,12 @@ const Div = styled.div`
     height: 100vh;
     color: green;
     top: 0;
+    left: 0;
     background-color: transparent;
     z-index: 9999;
+    overflow:hidden;
 `
+
 const Animation = keyframes`
     from{width:0}
     to{width:100%}

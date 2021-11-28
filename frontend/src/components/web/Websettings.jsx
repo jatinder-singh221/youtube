@@ -6,14 +6,18 @@ import {Icon, Cover} from './Webnavbar'
 export default function Websettings() {
     return (
         <Container>
-            <Styledlink to = '/' >
+            <Styledlink to = '/account' >
                 <Cover>
                     <Icon icon='user' />
                 </Cover>
                 Account
             </Styledlink>
-            <Styledlink to = '/explore'><Icon icon='compass' /> Explore</Styledlink>
-            <Styledlink to = '/subscription'><Icon icon='briefcase' /> Subscription</Styledlink>
+            <Styledlink to = '/channel' >
+                <Cover>
+                    <Icon icon='tv' />
+                </Cover>
+                Your Channel
+            </Styledlink>
         </Container>
     )
 }

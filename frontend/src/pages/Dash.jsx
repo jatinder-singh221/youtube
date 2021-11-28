@@ -1,22 +1,24 @@
 import React from 'react'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
 import Loading from '../components/Loading'
-import Home from './Home'
 
-const Webhome = React.lazy(()=>import('../components/web/Webhome'))
+const Webhome = React.lazy(() => import('../components/web/Webhome'))
 const Mobilehome = React.lazy(() => import('../components/mobile/Mobilehome'))
 
-export default function Page() {
+
+export default function Dash(props) {
+
     return (
         <React.Suspense fallback = {<Loading />}>
             <BrowserView>
-                <Home component = {<Webhome/>} />
+                <Webhome />
+                <p style={{height:'400vh'}}></p>
             </BrowserView>
-            <TabletView>
-                <Home component = {<Webhome/>} />
+            <TabletView >
+                <Webhome />
             </TabletView>
             <MobileOnlyView>
-                <Home component = {<Mobilehome />} />
+                <Mobilehome />
             </MobileOnlyView>
         </React.Suspense>
     )
