@@ -17,14 +17,14 @@ export default function Webhome() {
     return (
         <Container>
             {videos.map((items, index)=>{
-                return <StyledLink to = '/go' key= {index}>
+                return <StyledLink to ={`/watch/${items.id}`} key= {index}>
                     <Over>
                         <P>{items.video_name}</P>
                         <Cover >
                             <Icon icon = 'play' />
                         </Cover>
                     </Over>
-                    <Img src={items.video_thumb_nail} alt="thumb" />
+                    <Img src={items?.video_thumb_nail} alt="thumb" />
                     <Box>
                         <ChannelLogo src={items.channel.channel_picture} alt="cover" />
                         <P>{items.video_name}</P>
@@ -51,6 +51,7 @@ export const Container = styled.main`
     padding:0 0.5em ;
     align-content: flex-start;
     scroll-behavior: smooth;
+    justify-content: flex-start;
 
     @media(max-width:1024px){
         grid-template-columns: auto auto ;
@@ -81,6 +82,7 @@ export const StyledLink = styled(Link)`
     margin-top: 0;
     position: relative;
     min-width: 310px;
+    max-width: 310px;
 
     &:hover{
         box-shadow: 0 8px 15px #202020;

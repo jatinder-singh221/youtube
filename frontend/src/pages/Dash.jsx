@@ -12,7 +12,6 @@ export default function Dash(props) {
         <React.Suspense fallback = {<Loading />}>
             <BrowserView>
                 <Webhome />
-                <p style={{height:'400vh'}}></p>
             </BrowserView>
             <TabletView >
                 <Webhome />

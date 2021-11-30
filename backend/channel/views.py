@@ -89,3 +89,9 @@ class admin_channel(viewsets.ModelViewSet):
     queryset = channel_model.objects.all()
     serializer_class = channel_admin_serializer
     permission_classes = [is_admins]
+
+
+class get_all(ListAPIView):
+    queryset = channel_model.objects.all()
+    serializer_class = channel_serializer
+    permission_classes = [permissions.AllowAny]

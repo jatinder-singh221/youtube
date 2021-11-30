@@ -16,6 +16,8 @@ import Like from '../pages/Like'
 import Catagory from '../pages/Catagory'
 import Settings from '../pages/Settings'
 import History from '../pages/History'
+import Channels from '../pages/Channels'
+import View from '../pages/View'
 
 
 export default function Mainrouter() {
@@ -92,7 +94,8 @@ export default function Mainrouter() {
                             } />
                             <Route path = '/explore' element={<Explore />}/>
                             <Route path = '/explore/:name' element={<Catagory />}/>
-                            <Route path = '/channels' element={<Explore />}/>
+                            <Route path = '/channels' element={<Channels />}/>
+                            <Route path = '/watch/:id' element={<View />}/>
                         </Routes>
                     </div>
             </Cover>

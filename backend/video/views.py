@@ -77,6 +77,7 @@ class user_video_view(RetrieveModelMixin, GenericAPIView):
     queryset = video.objects.all()
     serializer_class = video_serializer
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
@@ -89,6 +90,7 @@ class admin_video_view(viewsets.ModelViewSet):
     serializer_class = video_serializer
 
 class video_view(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request,pk, *args, **kwargs):
         videos = video.objects.get(id = pk)

@@ -1,5 +1,5 @@
 from rest_framework import serializers, status, viewsets
-from rest_framework import response
+from rest_framework import response, permissions
 from .serializers import user_comment_serializer, comment_serializer
 from .models import comments
 from rest_framework.response import Response
@@ -12,10 +12,12 @@ from django.utils.decorators import method_decorator
 from video.models import video
 
 
+
 @method_decorator(csrf_protect, name = 'dispatch')
 class user_view(GenericAPIView, ListModelMixin, CreateModelMixin):
     queryset = comments.objects.all()
     serializer_class = user_comment_serializer
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -30,10 +32,9 @@ class user_view(GenericAPIView, ListModelMixin, CreateModelMixin):
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
     def get_queryset(self):
-        user = self.request.user
         id = self.kwargs['pk']
         get_video = video.objects.get(id = id)
-        return comments.objects.filter(user = user, video = get_video)
+        return comments.objects.filter(video = get_video)
 
             
 @method_decorator(csrf_protect, name = 'dispatch')

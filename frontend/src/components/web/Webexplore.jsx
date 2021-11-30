@@ -38,6 +38,7 @@ export const Styledlink = styled(Link)`
     justify-content: center;
     background-color: #202020;
     border-radius: 10px;
+    min-width: 310px;
 
     &:hover{
         background-color: #000;

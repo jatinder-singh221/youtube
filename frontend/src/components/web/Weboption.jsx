@@ -35,11 +35,11 @@ export default function Weboption(props) {
            <StyledLink to='/auth/logout'>Sign out</StyledLink>
            <Hr />
            <StyledLink to='/account'>Notifications</StyledLink> 
-           <StyledLink to='/account'>Library</StyledLink> 
+           <StyledLink to='/library'>Library</StyledLink> 
            <Hr />
-           <StyledLink to='/account'>Help</StyledLink>
-           <StyledLink to='/account'>Send Feedback</StyledLink>
-           <StyledLink to='/account'>Settings</StyledLink>
+           <StyledLink to='/help'>Help</StyledLink>
+           <StyledLink to='/feedback'>Send Feedback</StyledLink>
+           <StyledLink to='/settings'>Settings</StyledLink>
         </Cover>
     )
 }
