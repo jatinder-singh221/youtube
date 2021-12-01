@@ -93,10 +93,11 @@ const Container = styled.div`
 `
 
 const Player = styled.video`
-    object-fit: fill;
+    object-fit: contain;
     min-height:40vh;
     max-height: 70vh;
-    width:100%;
+    margin:0;
+    padding:0;
 
     &::-webkit-media-controls-play-button{
         background-color: #FF0000;
@@ -114,6 +115,12 @@ const Player = styled.video`
         background-color: #f00;
         padding-bottom: 0;
         margin-bottom: 20px;
+    }
+    &:full-screen{
+        margin:0;
+        padding:0;
+        width: 100vw !important;
+        height: 100vh;
     }
 `
 const Make = styled.div`

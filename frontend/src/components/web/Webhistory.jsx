@@ -14,7 +14,7 @@ export default function Webhistory() {
     return (
         <Container>
             {videos.map((items, index)=>{
-                return <StyledLink to = '/go' key= {index}>
+                return <StyledLink to = {`/watch/${items.video.id}`} key= {index}>
                     <Over>
                         <P>{items.video.video_name}</P>
                         <Cover >

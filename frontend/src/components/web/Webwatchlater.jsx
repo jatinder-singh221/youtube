@@ -17,7 +17,7 @@ export default function Webwatchlater() {
     return (
         <Container>
             {Later.length !== 0?Later.map((items, index) =>{
-                return <StyledLink to = '/go' key= {index}>
+                return <StyledLink to = {`/watch/${items.video.id}`} key= {index}>
                 <Over>
                     <P>{items.video.video_name}</P>
                     <Cover >
@@ -33,8 +33,6 @@ export default function Webwatchlater() {
                 <Desc>{new Date (items.upload_time).toLocaleString()}</Desc>
             </StyledLink>
             }):<P>No Items in Watch Later</P>}
-
-
         </Container>
     )
 }

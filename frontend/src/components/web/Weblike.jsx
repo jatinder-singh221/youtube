@@ -17,7 +17,7 @@ export default function Weblike() {
     return (
         <Container>
             {Like.length !== 0?Like.map((items, index) =>{
-                return <StyledLink to = '/go' key= {index}>
+                return <StyledLink to = {`/watch/${items.video.id}`}  key= {index}>
                 <Over>
                     <P>{items.video.video_name}</P>
                     <Cover >

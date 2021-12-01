@@ -20,7 +20,7 @@ export default function Webcatagory() {
     return (
         <Container>
             {Later.length !== 0?Later.map((items, index) =>{
-                return <StyledLink to = '/go' key= {index}>
+                return <StyledLink to = {`/watch/${items.id}`} key= {index}>
                 <Over>
                     <P>{items.video_name}</P>
                     <Cover >
