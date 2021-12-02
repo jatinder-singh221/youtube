@@ -54,7 +54,7 @@ export const Container = styled.main`
     justify-content: flex-start;
 
     @media(max-width:1024px){
-        grid-template-columns: auto auto ;
+        grid-template-columns: auto auto;
     }
 `
 
@@ -82,7 +82,7 @@ export const StyledLink = styled(Link)`
     margin-top: 0;
     position: relative;
     min-width: 310px;
-    max-width: 310px;
+    max-width: 30px;
 
     &:hover{
         box-shadow: 0 8px 15px #202020;

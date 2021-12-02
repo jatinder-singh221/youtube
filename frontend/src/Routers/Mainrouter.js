@@ -18,6 +18,7 @@ import Settings from '../pages/Settings'
 import History from '../pages/History'
 import Channels from '../pages/Channels'
 import View from '../pages/View'
+import Which from '../pages/Which'
 
 
 export default function Mainrouter() {
@@ -95,6 +96,11 @@ export default function Mainrouter() {
                             <Route path = '/explore' element={<Explore />}/>
                             <Route path = '/explore/:name' element={<Catagory />}/>
                             <Route path = '/channels' element={<Channels />}/>
+                            <Route path = '/channelsview/:id/' element={<Which />}>
+                                <Route path='/channelsview/:id/about' element={<p>about</p>}/>
+                                <Route path='/channelsview/:id/videos' element={<p>video</p>}/>
+                                <Route path='/channelsview/:id/playlists' element={<p>playlists</p>}/>
+                            </Route>
                             <Route path = '/watch/:id' element={<View />}/>
                         </Routes>
                     </div>
