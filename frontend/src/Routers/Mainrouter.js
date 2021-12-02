@@ -21,6 +21,9 @@ import View from '../pages/View'
 import Which from '../pages/Which'
 
 
+const Webchannelabout = React.lazy(() => import('../components/web/Webchannelabout'))
+
+
 export default function Mainrouter() {
     const [bar, setbar] = useState()
 
@@ -95,11 +98,11 @@ export default function Mainrouter() {
                             } />
                             <Route path = '/explore' element={<Explore />}/>
                             <Route path = '/explore/:name' element={<Catagory />}/>
-                            <Route path = '/channels' element={<Channels />}/>
-                            <Route path = '/channelsview/:id/' element={<Which />}>
-                                <Route path='/channelsview/:id/about' element={<p>about</p>}/>
-                                <Route path='/channelsview/:id/videos' element={<p>video</p>}/>
-                                <Route path='/channelsview/:id/playlists' element={<p>playlists</p>}/>
+                            <Route path = '/channel' element={<Channels />}/>
+                            <Route path = '/channelview/:id/' element={<Which />}>
+                                <Route path='/channelview/:id/about' element={<Webchannelabout />}/>
+                                <Route path='/channelview/:id/videos' element={<p>video</p>}/>
+                                <Route path='/channelview/:id/playlists' element={<p>playlists</p>}/>
                             </Route>
                             <Route path = '/watch/:id' element={<View />}/>
                         </Routes>

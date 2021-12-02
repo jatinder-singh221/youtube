@@ -1,23 +1,31 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { NavLink, useParams,Outlet} from 'react-router-dom'
-import care from '../../assests/care.jpg'
+import axios from 'axios'
 
 
 export default function Webview() {
     const {id} = useParams()
+    const [channel, setchannel] = useState({})
+
+    useEffect(() => {
+        axios.get(`http://127.0.0.1:8000/backendchannel/about/${id}/`)
+        .then((response) =>{
+            setchannel(response.data)
+        })
+    }, [id])
     return (
         <Conatiner>
             <Box>
-                <Img src={care} alt="logo" />
-                <Logo src={care} alt="logo" />
-                <P>Jatinder Singh</P>
+                <Img src={channel.channel_cover} alt="logo" />
+                <Logo src={channel.channel_picture} alt="logo" />
+                <P>{channel.channel_name}</P>
                 <Small>2000000 Subscribers</Small>
             </Box>
             <Navcontainer>
-                <StyledLink to={`/channelsview/${id}/about/`}>About</StyledLink>
-                <StyledLink to={`/channelsview/${id}/videos/`}>Videos</StyledLink>
-                <StyledLink to={`/channelsview/${id}/playlists/`}>Playlists</StyledLink>
+                <StyledLink to={`/channelview/${id}/about/`}>About</StyledLink>
+                <StyledLink to={`/channelview/${id}/videos/`}>Videos</StyledLink>
+                <StyledLink to={`/channelview/${id}/playlists/`}>Playlists</StyledLink>
             </Navcontainer>
             <Outlet />
         </Conatiner>

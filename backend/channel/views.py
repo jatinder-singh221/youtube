@@ -7,7 +7,7 @@ from .serializer import channel_admin_serializer, channel_serializer
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 from rest_framework.parsers import  MultiPartParser, FormParser
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from video.models import video
 from video.serializer import video_serializer
 from playlist.models import palylist
@@ -82,6 +82,10 @@ class channel_playlist(ListAPIView):
         channel = channel_model.objects.get(id = id)
         return self.queryset.select_related('channel_is').filter(channel_is = channel)
 
+class channel_about(RetrieveAPIView):
+    queryset = channel_model.objects.all()
+    serializer_class = channel_serializer
+    permission_classes = [permissions.AllowAny]
 
 @method_decorator(csrf_protect, name = 'dispatch')
 class admin_channel(viewsets.ModelViewSet):
