@@ -6,9 +6,6 @@ import axios from 'axios'
 export default function Mobileexpolre() {
     const [catagories, setcatagories] = useState([])
 
-    const getCatagories = (e) =>{
-        let id = e.target.id
-    }
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/backendcatagories/')
         .then((response)=>{
@@ -19,7 +16,7 @@ export default function Mobileexpolre() {
     return (
         <Container>
             {catagories.map((items, index) =>{
-                return <Styledlink to='/catagories/id' key={index} id={index} onClick={getCatagories}>
+                return <Styledlink to={`/explore/${items.catagory_name}`} key={index} id={index}>
                     <P id={index}>{items.catagory_name}</P>
                 </Styledlink>
             })}

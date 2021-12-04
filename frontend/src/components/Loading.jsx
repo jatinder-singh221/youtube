@@ -1,34 +1,29 @@
 import React from 'react'
-import styled,{keyframes} from 'styled-components'
+import styled, {keyframes} from 'styled-components'
+import Logo from '../assests/YouTube.svg'
 
-export default function Loading() {
+export default function Loader() {
     return (
-        <Div>
-            <Cover></Cover>
-        </Div>
+        <Section>
+            <Img src={Logo} alt="logo" />
+        </Section>
     )
 }
 
-const Div = styled.div`
-    position: absolute;
+const Section = styled.section`
     width: 100%;
     height: 100vh;
-    color: green;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    z-index: 9999;
-    overflow:hidden;
+    display: grid;
+    place-items: center;
+` 
+
+const animateImg = keyframes`
+    from{opacity:0%}
+    to{opacity:100%}
 `
 
-const Animation = keyframes`
-    from{width:0}
-    to{width:100%}
-`
-
-const Cover = styled.div`
+const Img = styled.img`
     width: 100%;
-    height: 0.1em;
-    background-color: #FF0000;
-    animation: ${Animation} 2s  infinite ;
+    height: 20vh;
+    animation: ${animateImg} 2s  infinite ;
 `

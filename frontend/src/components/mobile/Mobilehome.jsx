@@ -6,16 +6,18 @@ import axios from 'axios'
 
 export default function Mobilehome() {
     const [videos, setvideos] = useState([])
+    
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/backendvideo/')
         .then((response) =>{
             setvideos(response.data)
         })
-    }, [])   
+    }, [])
+
     return (
         <Container>
             {videos.map((items, index)=>{
-                return <StyledLink to = '/go' key= {index}>
+                return <StyledLink to = {`/watch/${items.id}`} key= {index}>
                     <Over>
                         <P>{items.video_name}</P>
                         <Cover >
@@ -30,10 +32,7 @@ export default function Mobilehome() {
                     <Desc>{items.video_description}</Desc>
                     <Desc>{new Date (items.upload_time).toLocaleString()}</Desc>
                 </StyledLink>
-            })
-
-            }
-
+            })}
         </Container>
     )
 }

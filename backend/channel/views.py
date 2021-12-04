@@ -66,6 +66,7 @@ class channel_creater_view(views.APIView):
 class channel_videos(ListAPIView):
     queryset = video.objects.all()
     serializer_class = video_serializer
+    permission_classes = [permissions.AllowAny]
     
     def get_queryset(self):
         id = self.kwargs['pk']

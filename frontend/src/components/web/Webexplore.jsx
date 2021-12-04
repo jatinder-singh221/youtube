@@ -27,7 +27,6 @@ export default function Webexplore() {
 
 
 export const Styledlink = styled(Link)`
-    width: auto;
     height: 5em;
     text-decoration: none;
     display: flex;
@@ -35,7 +34,6 @@ export const Styledlink = styled(Link)`
     justify-content: center;
     background-color: #202020;
     border-radius: 10px;
-    min-width: 310px;
 
     &:hover{
         background-color: #000;

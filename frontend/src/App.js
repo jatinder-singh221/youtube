@@ -1,5 +1,5 @@
 import React, {useState, createContext, useEffect} from 'react'
-import Mainrouter from './Routers/Mainrouter'
+import Mainrouter from './Routes/Mainrouter'
 import Loader from './components/Loader'
 import axios from 'axios'
 

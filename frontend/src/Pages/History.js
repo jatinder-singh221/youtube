@@ -1,19 +1,19 @@
 import React from 'react'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
-import Websettings from '../components/web/Websettings'
+import Webhistory from '../components/web/Webhistory'
+import Mobilehistory from '../components/mobile/Mobilehistory'
 
-
-export default function Watch() {
+export default function History() {
     return (
         <>
             <BrowserView>
-                <Websettings />
+                <Webhistory />
             </BrowserView>
             <TabletView>
-                <Websettings />
+                <Webhistory />
             </TabletView>
             <MobileOnlyView>
-                {/* p>hii<p />} /> */}
+                <Mobilehistory />
             </MobileOnlyView>
         </>
     )

@@ -4,16 +4,17 @@ import {Link} from 'react-router-dom'
 import {Cover, Icon} from '../web/Webnavbar'
 import axios from 'axios'
 
-
-
 export default function Webhome() {
+
     const [videos, setvideos] = useState([])
+
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/backendvideo/')
         .then((response) =>{
             setvideos(response.data)
         })
     }, [])
+
     return (
         <Container>
             {videos.map((items, index)=>{
@@ -41,20 +42,19 @@ export default function Webhome() {
 }
 
 export const Container = styled.main`
-    height:90vh ;
+    height:100vh ;
     margin-top: 65px;
     background-color: transparent;
     overflow:hidden;
     display: grid;
-    grid-gap:10px;
+    grid-gap:15px;
     grid-template-columns: auto auto auto auto;
     padding:0 0.5em ;
-    align-content: flex-start;
     scroll-behavior: smooth;
-    justify-content: flex-start;
+    align-content: flex-start;
 
     @media(max-width:1024px){
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto auto;
     }
 `
 
@@ -81,8 +81,6 @@ export const StyledLink = styled(Link)`
     box-sizing:border-box;
     margin-top: 0;
     position: relative;
-    min-width: 310px;
-    max-width: 30px;
 
     &:hover{
         box-shadow: 0 8px 15px #202020;

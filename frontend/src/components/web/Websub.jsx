@@ -14,13 +14,11 @@ export default function Mobilesub() {
         })
     }, [])
 
-    const getCatagories = (e) =>{
-        let id = e.target.id
-    }
+
     return (
         <Container>
             {subscribed.length !== 0?subscribed.map((items, index) =>{
-                return <Styledlink to='/channel/id' key={index} id={index} onClick={getCatagories}>
+                return <Styledlink to={`/channelview/${items.channel.id}/about`} key={index} id={index}>
                     <ChannelLogo src={items.channel.channel_picture} alt="logo" />
                     <P id={index}>{items.channel.channel_name}</P>
                 </Styledlink>

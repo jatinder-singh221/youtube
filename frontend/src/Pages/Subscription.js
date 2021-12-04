@@ -1,13 +1,11 @@
 import React from 'react'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
-import Loading from '../components/Loading'
-
-const Websub = React.lazy(()=>import('../components/web/Websub'))
-const Mobilesub = React.lazy(()=>import('../components/mobile/Mobilesub'))
+import Websub from '../components/web/Websub'
+import Mobilesub from '../components/mobile/Mobilesub'
 
 export default function Subscription() {
     return (
-        <React.Suspense fallback = {<Loading />}>
+        <>
             <BrowserView>
                 <Websub />
             </BrowserView>
@@ -17,6 +15,6 @@ export default function Subscription() {
             <MobileOnlyView>
                 <Mobilesub />
             </MobileOnlyView>
-        </React.Suspense>
+        </>
     )
 }
