@@ -19,12 +19,12 @@ export default function MObileoption(props) {
            <StyledLink to='/account'>Upload Video</StyledLink>
            <StyledLink to='/auth/logout'>Sign out</StyledLink>
            <Hr />
-           <StyledLink to='/account'>Notifications</StyledLink> 
-           <StyledLink to='/account'>Library</StyledLink> 
+           <StyledLink to='/channels'>All Channels</StyledLink> 
+           <StyledLink to='/Library'>Library</StyledLink> 
            <Hr />
-           <StyledLink to='/account'>Help</StyledLink>
-           <StyledLink to='/account'>Send Feedback</StyledLink>
-           <StyledLink to='/account'>Settings</StyledLink>
+           <StyledLink to='/help'>Help</StyledLink>
+           <StyledLink to='/feedback'>Send Feedback</StyledLink>
+           <StyledLink to='/settings'>Settings</StyledLink>
         </Container>
     )
 }

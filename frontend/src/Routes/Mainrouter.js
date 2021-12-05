@@ -15,6 +15,10 @@ const Later = React.lazy(()=> import('../Pages/Later'))
 const Like = React.lazy(()=> import('../Pages/Like'))
 const Catagories = React.lazy(()=> import('../Pages/Catagories'))
 const Libraryview = React.lazy(()=> import('../Pages/Libraryview'))
+const Login = React.lazy(()=> import('../Pages/Login'))
+const Register = React.lazy(()=> import('../Pages/Register'))
+const Channels = React.lazy(()=> import('../Pages/Channels'))
+const Settings = React.lazy(()=> import('../Pages/Settings'))
 
 export default function Mainrouter() {
 
@@ -49,6 +53,7 @@ export default function Mainrouter() {
                         <Route path='/'  element ={<Landing />} />
                         <Route path='/explore/*'  element ={<Explore />} />
                         <Route path='/catagories/:name'  element ={<Catagories />} />
+                        <Route path='/channels'  element ={<Channels />} />
 
 
                         <Route path='/subscription' element= {
@@ -79,6 +84,21 @@ export default function Mainrouter() {
                         <Route path='/videos/:id' element= {
                             <Pravite bool = {true} where ='/auth/login' >
                                 <Libraryview />
+                            </Pravite>
+                        } />
+                        <Route path='/auth/login' element= {
+                            <Pravite bool = {false} where ='/' >
+                                <Login />
+                            </Pravite>
+                        } />
+                        <Route path='/auth/register' element= {
+                            <Pravite bool = {false} where ='/' >
+                                <Register />
+                            </Pravite>
+                        } />
+                        <Route path='/settings' element= {
+                            <Pravite bool = {true} where ='/auth/login' >
+                                <Settings />
                             </Pravite>
                         } />
                         

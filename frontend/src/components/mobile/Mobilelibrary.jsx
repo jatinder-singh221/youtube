@@ -28,6 +28,7 @@ export default function Mobilelibrary() {
             <Styledlink to = '/history'><Cover><Icon icon='clock' /></Cover> History</Styledlink>
             <Styledlink to = '/watch-later'><Cover><Icon icon='disc' /></Cover> Watch later</Styledlink>
             <Styledlink to = '/liked'><Cover><Icon icon='thumbs-up' /></Cover> Liked</Styledlink>
+            <Styledlink to = '/channels'><Cover><Icon icon='plus-circle' /></Cover> All Channels</Styledlink>
         </Container>
     )
 }
@@ -51,7 +52,7 @@ const Make = styled.div`
     }
 `
 
-const Slink = styled(Link)`
+export const Slink = styled(Link)`
     text-decoration: none;
     height: 100%;
     min-width: 110px;
