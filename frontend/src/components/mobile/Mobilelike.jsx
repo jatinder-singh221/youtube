@@ -4,13 +4,12 @@ import {Cover, Icon} from '../web/Webnavbar'
 import {Container} from './Mobilehome'
 import axios from 'axios'
 
-
-export default function Mobilehistory() {
+export default function Mobilelike() {
 
     const [videos, setvideos] = useState([])
     
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendhistory/')
+        axios.get('http://127.0.0.1:8000/backendvotes/all/')
         .then((response) =>{
             setvideos(response.data)
         })
@@ -34,7 +33,7 @@ export default function Mobilehistory() {
                     <Desc>{items.video.video_description}</Desc>
                     <Desc>{new Date (items.video.upload_time).toLocaleString()}</Desc>
                 </StyledLink>
-            }):<P>Your History Is Empty</P>}
+            }):<P>No item Liked</P>}
         </Container>
     )
 }

@@ -11,6 +11,10 @@ const Explore = React.lazy(()=> import('../Pages/Explore'))
 const Subscription = React.lazy(()=> import('../Pages/Subscription'))
 const Library = React.lazy(()=> import('../Pages/Library'))
 const History = React.lazy(()=> import('../Pages/History'))
+const Later = React.lazy(()=> import('../Pages/Later'))
+const Like = React.lazy(()=> import('../Pages/Like'))
+const Catagories = React.lazy(()=> import('../Pages/Catagories'))
+const Libraryview = React.lazy(()=> import('../Pages/Libraryview'))
 
 export default function Mainrouter() {
 
@@ -43,7 +47,9 @@ export default function Mainrouter() {
                     <Routes>
 
                         <Route path='/'  element ={<Landing />} />
-                        <Route path='/explore'  element ={<Explore />} />
+                        <Route path='/explore/*'  element ={<Explore />} />
+                        <Route path='/catagories/:name'  element ={<Catagories />} />
+
 
                         <Route path='/subscription' element= {
                             <Pravite bool = {true} where ='/auth/login' >
@@ -58,6 +64,21 @@ export default function Mainrouter() {
                         <Route path='/history' element= {
                             <Pravite bool = {true} where ='/auth/login' >
                                 <History />
+                            </Pravite>
+                        } />
+                        <Route path='/Watch-later' element= {
+                            <Pravite bool = {true} where ='/auth/login' >
+                                <Later />
+                            </Pravite>
+                        } />
+                        <Route path='/liked' element= {
+                            <Pravite bool = {true} where ='/auth/login' >
+                                <Like />
+                            </Pravite>
+                        } />
+                        <Route path='/videos/:id' element= {
+                            <Pravite bool = {true} where ='/auth/login' >
+                                <Libraryview />
                             </Pravite>
                         } />
                         

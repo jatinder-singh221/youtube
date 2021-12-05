@@ -30,7 +30,7 @@ export default function Webhistory() {
                         <P>{items.video.video_name}</P>
                     </Box>
                     <Desc>{items.video.video_description}</Desc>
-                    <Desc>{new Date (items.upload_time).toLocaleString()}</Desc>
+                    <Desc>{new Date (items.video.upload_time).toLocaleString()}</Desc>
                 </StyledLink>
             }):<P>Your History Is Empty</P>}
         </Container>

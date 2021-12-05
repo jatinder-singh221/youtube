@@ -17,7 +17,7 @@ export default function Weblibrary() {
     return (
         <Container>
             {Library.length !== 0?Library.map((items, index) =>{
-                return <Styledlink to='/channel/id' key={index} id={index} >
+                return <Styledlink to={`/videos/${items.id}`} key={index} id={index} >
                     <P id={index}>{items.name}</P>
                 </Styledlink>
             }):<P>No Items in Library</P>}

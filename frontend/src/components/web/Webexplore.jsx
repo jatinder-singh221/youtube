@@ -17,7 +17,7 @@ export default function Webexplore() {
     return (
             <Container>
                 {catagories.map((items, index) =>{
-                    return <Styledlink to={`/explore/${items.catagory_name}`} key={index} id={index}>
+                    return <Styledlink to={`/catagories/${items.catagory_name}`} key={index} id={index}>
                         <P id={index}>{items.catagory_name}</P>
                     </Styledlink>
                 })}

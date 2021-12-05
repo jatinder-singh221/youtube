@@ -17,10 +17,10 @@ export default function Webaside(props) {
             <Hr />
             <P>More From YouTube</P>
             <Styledlink to = '/premium' onClick={() => window.location.href = 'https://www.youtube.com/premium'}><Icon icon='youtube' /> Premium</Styledlink>
-            <Styledlink to = '/explore/trendings'><Icon icon='activity' /> Trendings</Styledlink>
-            <Styledlink to = '/explore/movies'><Icon icon='film' /> Movies</Styledlink>
-            <Styledlink to = '/explore/game'><Icon icon='box' /> Games</Styledlink>
-            <Styledlink to = '/explore/live'><Icon icon='bar-chart-2' /> Live</Styledlink>
+            <Styledlink to = '/catagories/trendings'><Icon icon='activity' /> Trendings</Styledlink>
+            <Styledlink to = '/catagories/movies'><Icon icon='film' /> Movies</Styledlink>
+            <Styledlink to = '/catagories/game'><Icon icon='box' /> Games</Styledlink>
+            <Styledlink to = '/catagories/live'><Icon icon='bar-chart-2' /> Live</Styledlink>
             <Hr />
             <Styledlink to = '/channels'><Icon icon='plus-circle' /> All channels</Styledlink>
             <Hr />

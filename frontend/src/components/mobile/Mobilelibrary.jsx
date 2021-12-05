@@ -20,7 +20,7 @@ export default function Mobilelibrary() {
         <Container>
             <Make>
                 {Library.length !== 0?Library.map((items, index) =>{
-                 return <Slink to='/video/id' key={index} id={index} >
+                 return <Slink to={`/videos/${items.id}`} key={index} id={index} >
                     <P id={index}>{items.name}</P>
                 </Slink>
                 }):<P>No Items in Library</P>}
