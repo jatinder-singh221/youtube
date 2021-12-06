@@ -19,6 +19,7 @@ const Login = React.lazy(()=> import('../Pages/Login'))
 const Register = React.lazy(()=> import('../Pages/Register'))
 const Channels = React.lazy(()=> import('../Pages/Channels'))
 const Settings = React.lazy(()=> import('../Pages/Settings'))
+const Watch = React.lazy(()=> import('../Pages/Watch'))
 
 export default function Mainrouter() {
 
@@ -54,6 +55,7 @@ export default function Mainrouter() {
                         <Route path='/explore/*'  element ={<Explore />} />
                         <Route path='/catagories/:name'  element ={<Catagories />} />
                         <Route path='/channels'  element ={<Channels />} />
+                        <Route path='/watch/:id'  element ={<Watch />} />
 
 
                         <Route path='/subscription' element= {
