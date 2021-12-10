@@ -8,7 +8,7 @@ export default function Logout() {
     const history = useNavigate()
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendauth/logout/')
+        axios.get('backendauth/logout/')
         .then(()=>{
             Value.updateState()
             setTimeout(() => {

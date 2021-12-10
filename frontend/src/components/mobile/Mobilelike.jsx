@@ -9,7 +9,7 @@ export default function Mobilelike() {
     const [videos, setvideos] = useState([])
     
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendvotes/all/')
+        axios.get('backendvotes/all/')
         .then((response) =>{
             setvideos(response.data)
         })

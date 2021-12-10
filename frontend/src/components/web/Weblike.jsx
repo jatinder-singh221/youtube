@@ -7,7 +7,7 @@ export default function Weblike() {
     const [Like, setLike] = useState([])
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendvotes/all/')
+        axios.get('backendvotes/all/')
         .then((response) =>{
 
             setLike(response.data)

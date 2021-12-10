@@ -8,7 +8,7 @@ export default function Mobilehome() {
     const [videos, setvideos] = useState([])
     
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendvideo/')
+        axios.get('backendvideo/')
         .then((response) =>{
             setvideos(response.data)
         })
@@ -44,4 +44,8 @@ export const Container = styled.main`
     margin-top: 60px;
     min-height: 100vh;
     margin-bottom: 3em;
+
+    .active{
+        background-color: #303030;
+    }
 `

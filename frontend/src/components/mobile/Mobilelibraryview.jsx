@@ -12,7 +12,7 @@ export default function Mobilelibraryview() {
     const {id} = useParams()
     
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/backendlibrary/${id}/`)
+        axios.get(`backendlibrary/${id}/`)
         .then((response) =>{
             setvideos(response.data.videos)
         })

@@ -7,7 +7,7 @@ export default function Webhistory() {
     const [videos, setvideos] = useState([])
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendhistory/')
+        axios.get('backendhistory/')
         .then((response) =>{
             setvideos(response.data)
         })

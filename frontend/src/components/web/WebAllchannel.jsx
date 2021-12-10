@@ -8,7 +8,7 @@ export default function WebAllchannel() {
     const [channels, setchannels] = useState([])
     
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendchannel/all/')
+        axios.get('backendchannel/all/')
         .then((response)=>{
             setchannels(response.data)
         })

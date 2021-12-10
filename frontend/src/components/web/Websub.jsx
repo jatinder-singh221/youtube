@@ -8,7 +8,7 @@ export default function Mobilesub() {
 
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendsubscriber/')
+        axios.get('backendsubscriber/')
         .then((response) =>{
             setsubscribed(response.data)
         })

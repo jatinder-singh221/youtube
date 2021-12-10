@@ -5,6 +5,5 @@ from .models import subscriber
 class subscriber_serializer(serializers.ModelSerializer):
     class Meta:
        model = subscriber
-       fields = ['user', 'channel'] 
-       depth = 1
+       fields = "__all__"
         

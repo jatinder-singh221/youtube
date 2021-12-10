@@ -9,7 +9,7 @@ export default function Mobilewatchlater() {
     const [videos, setvideos] = useState([])
     
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendwatch/')
+        axios.get('backendwatch/')
         .then((response) =>{
             setvideos(response.data)
         })

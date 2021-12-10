@@ -1,19 +1,19 @@
 import React from 'react'
 import {BrowserView, MobileOnlyView, TabletView} from 'react-device-detect'
-import Webwatch from '../components/web/Webwatch'
-import Mobilewatch from '../components/mobile/Mobilewatch'
+import Webplaylist from '../components/web/Webplaylist'
+// import MobileAllChannel from '../components/mobile/MobileAllChannel'
 
-export default function Subscription() {
+export default function Explore() {
     return (
         <>
             <BrowserView>
-                <Webwatch />
+                <Webplaylist />
             </BrowserView>
             <TabletView>
-                <Webwatch />
+                <Webplaylist />
             </TabletView>
             <MobileOnlyView>
-                <Mobilewatch />
+                {/* <MobileAllChannel /> */}
             </MobileOnlyView>
         </>
     )

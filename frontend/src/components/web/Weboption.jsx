@@ -28,9 +28,8 @@ export default function Weboption(props) {
            <StyledLink to='/account'>Account</StyledLink>
            {Value.isCreator || Value.isAdmins?
                 <>
-                    <StyledLink to='/account'>Create Channel</StyledLink>
                     <StyledLink to='/account'>Upload Video</StyledLink>
-                </>:''
+                </>:<StyledLink to='/account'>Create Channel</StyledLink>
             }
            <StyledLink to='/auth/logout'>Sign out</StyledLink>
            <Hr />

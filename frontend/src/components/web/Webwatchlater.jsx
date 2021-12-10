@@ -7,7 +7,7 @@ export default function Webwatchlater() {
     const [Later, setLater] = useState([])
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendwatch/')
+        axios.get('backendwatch/')
         .then((response) =>{
 
             setLater(response.data)

@@ -1,10 +1,13 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import {Styledusername, StyledLink} from '../web/Weboption'
 import {Container, Box} from './Mobilenotification'
 import {Hr} from '../web/Webnotification'
 import {Cover, Icon} from '../web/Webnavbar'
+import { globalContext } from '../../App'
 
-export default function MObileoption(props) {    
+export default function MObileoption(props) {   
+    
+    const Value = useContext(globalContext)
     return (
         <Container>
             <Box>
@@ -15,8 +18,9 @@ export default function MObileoption(props) {
             </Box>
             <Hr />
            <StyledLink to='/account'>Account</StyledLink>
-           <StyledLink to='/account'>Create Channel</StyledLink>
-           <StyledLink to='/account'>Upload Video</StyledLink>
+           {Value.isCreator || Value.isAdmins?
+                <StyledLink to='/account'>Upload Video</StyledLink>:
+           <StyledLink to='/account'>Create Channel</StyledLink>}
            <StyledLink to='/auth/logout'>Sign out</StyledLink>
            <Hr />
            <StyledLink to='/channels'>All Channels</StyledLink> 

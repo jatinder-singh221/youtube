@@ -9,7 +9,7 @@ export default function Weblibraryview() {
     const {id} = useParams()
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/backendlibrary/${id}/`)
+        axios.get(`backendlibrary/${id}/`)
         .then((response) =>{
 
             setLater(response.data.videos)

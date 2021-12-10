@@ -18,3 +18,9 @@ class playlist_serializer(serializers.ModelSerializer):
     class Meta:
         model = palylist
         fields = '__all__' 
+
+class play_ser(serializers.ModelSerializer):
+    class Meta:
+        model = palylist
+        fields = '__all__' 
+        depth = 2

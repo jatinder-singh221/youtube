@@ -11,7 +11,7 @@ export default function Mobilelibrary() {
 
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendlibrary/')
+        axios.get('backendlibrary/')
         .then((response) =>{
             setLibrary(response.data)
         })

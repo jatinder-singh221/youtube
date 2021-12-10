@@ -1,4 +1,5 @@
 from .models import subscriber
+from rest_framework import permissions
 from .serializer import subscriber_serializer
 from channel.models import channel_model
 from rest_framework.views import APIView
@@ -9,6 +10,7 @@ from django.utils.decorators import method_decorator
 
 
 class subscriber_view(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request, pk,  *args, **kwargs):
         channel = channel_model.objects.get(id = pk)
@@ -43,7 +45,6 @@ class subscriber_add_remove(APIView):
 
         if int(request.data.get('user')) == user.id and int(request.data.get('channel')) == channel.id:
             put_data = subscriber_serializer(data = request.data)
-
             if put_data.is_valid():
                 put_data.save()
                 return Response(status = status.HTTP_201_CREATED)

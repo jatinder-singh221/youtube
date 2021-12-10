@@ -7,6 +7,7 @@ const globalContext = createContext()
 
 export default function App() {
   
+  const [id, setid] = useState(0)
   const [username, setusername] = useState('')
   const [isLogin, setislogin] = useState(false)
   const [hasNotification, sethasnotification] = useState(false)
@@ -15,9 +16,10 @@ export default function App() {
   const [getUserdetails, setgetUserdetails] = useState(false)
 
   const updateState = () =>{
-      axios.get('http://127.0.0.1:8000/backendauth/')
+      axios.get('/backendauth/')
       .then((response)=>{
         let data = response.data.state
+        setid(data.id)
         setusername(data.username)
         setislogin(data.isLogin)
         sethasnotification(data.hasNotification)
@@ -39,7 +41,7 @@ export default function App() {
 
 
   const returnedValue = {
-    username, isLogin, hasNotification, isCreator, isAdmin, updateState, getState
+    id,username, isLogin, hasNotification, isCreator, isAdmin, updateState, getState
   }
 
   return (

@@ -66,7 +66,7 @@ export default function Mobileregiste() {
         form.append('last_name',last)
         form.append('username',user)
         form.append('password',pass)
-        axios.post('http://127.0.0.1:8000/backendauth/register/', form,
+        axios.post('backendauth/register/', form,
         {headers:{
             'Accept':'application/json',
             'Content-type':'application/json',

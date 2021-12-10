@@ -3,13 +3,13 @@ import {useParams} from 'react-router-dom'
 import axios from 'axios'
 import CSRF from '../CSRF'
 import Cookies from 'js-cookie'
-import styled from 'styled-components'
-import {Cover, Icon} from './Webnavbar'
-import { ChannelLogo} from './Webhome'
-import {Link} from 'react-router-dom'
+import {Cover, Icon} from '../web/Webnavbar'
+import { ChannelLogo} from '../web/Webhome'
 import {globalContext} from '../../App'
+import {Container, Player, Make, P,Over,Small, Channellink, Sub, Commint, Input, Button, Ul, Li } from '../web/Webwatch'
+import styled from 'styled-components'
 
-export default function Webwatch() {
+export default function Mobilewatch() {
 
     const {id} = useParams()
     const Value = useContext(globalContext)
@@ -46,7 +46,6 @@ export default function Webwatch() {
         
     }, [id, isSub, details?.channel?.id])
 
-
     const addRemove = (channelId) =>{
         if (isSub){
             axios.delete(`/backendsubscriber/view/${channelId}/`,{
@@ -74,10 +73,11 @@ export default function Webwatch() {
         }
     } 
 
+
     return (
         <Container>
             <CSRF />
-            <Player src={details.video} poster={details.video_thumb_nail} controls controlsList='nodownload seekable'></Player>
+            <Mobileplayer src={details.video} poster={details.video_thumb_nail} controls controlsList='nodownload seekable' preload='metadata' id='myVideo'></Mobileplayer>
             <Make>
                     <P>{details.video_name}</P>   
                 <Make>
@@ -94,7 +94,6 @@ export default function Webwatch() {
             </Make>
             <Over>
                 <Small>Views : {how}</Small>
-                <Small>{new Date (details.upload_time).toLocaleString()}</Small>
                 <Small>Subscribers: {howmanySub}</Small>
             </Over>
             <Over>
@@ -123,146 +122,11 @@ export default function Webwatch() {
     )
 }
 
-export const Container = styled.div`
-    min-height:90vh ;
-    margin-top: 65px;
-    background-color: transparent;
-    overflow:hidden;
-    padding:0 0.5em ;
-    align-content: flex-start;
-    scroll-behavior: smooth;
-    justify-content: flex-start;
-    flex-direction: column;
-    display:flex;
+
+const Mobileplayer = styled(Player)`
+    min-height:30vh;
+    width:100%;
+    max-height:40vh;
 `
 
-export const Player = styled.video`
-    object-fit: contain;
-    min-width: auto;
-    min-height:40vh;
-    max-height: 70vh;
-    margin:0;
-    padding:0;
-
-    &::-webkit-media-controls-play-button{
-        background-color: #FF0000;
-        width:60px;
-        height:40px;
-        border-radius:10px;
-        margin:0.3em 0.2em;
-    }
-    &::-webkit-media-controls-current-time-display{
-        color:#fff;
-        margin-left:0.4em;
-    }
-
-    &::-webkit-media-controls-timeline{
-        background-color: #f00;
-        padding-bottom: 0;
-        margin-bottom: 20px;
-    }
-    &:full-screen{
-        margin:0;
-        padding:0;
-        width: 100vw !important;
-        height: 100vh;
-    }
-`
-export const Make = styled.div`
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-`
-export const P = styled.p`
- font-size: 30px;
- margin:0;
- margin-top:1em;
- display:flex;
- color:#fff;
- margin-bottom: 0.3em;
-`
-
-export const Over = styled.div`
-    color:#fff;
-    border-bottom: 1px solid #303030;
-    padding:0.5em 0;
-    display: flex;
-   align-items:center;
-`
-export const Small = styled.small`
-    margin:0 1em;
-`
-
-export const Commint = styled.div`
-    min-height: 60vh;
-    margin:1em 0.4em;
-`
-export const Input = styled.input`
-    width: 20em;
-    height: 2em;
-    border:none;
-    outline:none;
-    background: none;
-    border-bottom: 1px solid #303030;
-    color:#fff;
-
-    &:focus{
-        border-bottom: 1px solid #f00;
-    }
-
-    @media(max-width:540px){
-        width: 10em;
-    }
-`
-
-export const Button = styled.button`
-    border:none;
-    outline:none;
-    padding:0.3em 2em;
-    margin:0 0.5em;
-    border-radius: 5px;
-    background-color: #303030;
-    color:#fff;
-    
-    @media(max-width:540px){
-       padding:0.3em 1em;
-    }
-`
-
-export const Ul = styled.ul`
-    list-style-type: none;
-    color:#909090;
-
-    
-    @media(max-width:540px){
-        margin:0;
-        padding:0;
-    }
-`
-
-export const Channellink = styled(Link)`
-    text-decoration: none;
-    color:#fff;
-`
-
-export const Li = styled.li`
-    height: 2.5em;
-    border-bottom: 1px solid #303030;
-    margin:0.4em 0;
-
-    &:hover{
-        background-color:#202020;
-    }
-`
-
-export const Sub = styled.button`
-    margin:0 0.2em;
-    margin-left:auto;
-    padding:0.7em 1em;
-    outline:none;
-    border:none;
-    border-radius: 5px;
-    color:#fff;
-    background-color: #FF0000;
-`
 

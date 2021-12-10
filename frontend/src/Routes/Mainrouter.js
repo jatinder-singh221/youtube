@@ -20,6 +20,11 @@ const Register = React.lazy(()=> import('../Pages/Register'))
 const Channels = React.lazy(()=> import('../Pages/Channels'))
 const Settings = React.lazy(()=> import('../Pages/Settings'))
 const Watch = React.lazy(()=> import('../Pages/Watch'))
+const View = React.lazy(()=> import('../Pages/View'))
+const Channelplay = React.lazy(()=> import('../Pages/Channelplay'))
+const Channelabout = React.lazy(()=> import('../Pages/Channelabout'))
+const Channelvideo = React.lazy(()=> import('../Pages/Channelvideo'))
+
 
 export default function Mainrouter() {
 
@@ -56,7 +61,11 @@ export default function Mainrouter() {
                         <Route path='/catagories/:name'  element ={<Catagories />} />
                         <Route path='/channels'  element ={<Channels />} />
                         <Route path='/watch/:id'  element ={<Watch />} />
-
+                        <Route path='/channelview/:id/' element={<View />}>
+                            <Route path='/channelview/:id/about' element={<Channelabout />}/>
+                            <Route path='/channelview/:id/videos' element={<Channelvideo />}/>
+                            <Route path='/channelview/:id/playlists' element={<Channelplay />}/>
+                        </Route>
 
                         <Route path='/subscription' element= {
                             <Pravite bool = {true} where ='/auth/login' >

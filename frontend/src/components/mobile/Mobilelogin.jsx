@@ -44,7 +44,7 @@ export default function Mobilelogin() {
         form.append('username',username)
         form.append('password',password)
 
-        axios.post('http://127.0.0.1:8000/backendauth/login/', form,{
+        axios.post('backendauth/login/', form,{
             headers:{
                 'Accept':'application/json',
                 'Content-type':'application/json',

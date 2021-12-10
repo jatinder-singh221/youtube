@@ -1,11 +1,11 @@
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, ListAPIView, RetrieveAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
-from .serializers import playlist_serializer
+from .serializers import playlist_serializer, play_ser
 from .models import palylist
 from rest_framework.response import Response
 from rest_framework import status
 from channel.models import channel_model
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 
@@ -58,6 +58,14 @@ class updata_delete_view(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
         get_channel = channel_model.objects.select_related('user').get(user = user)
         return palylist.objects.select_related('channel_is').filter(channel_is = get_channel, id = id)
 
+class get_playists(ListAPIView):
+    serializer_class = play_ser
+    permission_classes = [permissions.AllowAny]
+    
+    def get_queryset(self):
+        id = self.kwargs['pk']
+        return palylist.objects.select_related('channel_is').filter(channel_is = id)
+    
 
 @method_decorator(csrf_protect, name = 'dispatch')
 class adminplaylist(viewsets.ModelViewSet):

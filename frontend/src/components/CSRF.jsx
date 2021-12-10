@@ -20,7 +20,7 @@ export default function CSRF() {
     }
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000')
+        axios.get('/')
         setcsrfValue(getCookie('csrftoken'))
     }, [])
     return (

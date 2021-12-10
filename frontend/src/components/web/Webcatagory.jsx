@@ -9,10 +9,8 @@ export default function Webcatagory() {
     const {name} = useParams()
 
     useEffect(() => {
-        console.log('hiii');
-        axios.get(`http://127.0.0.1:8000/backendcatagories/get/${name}/`)
+        axios.get(`/backendcatagories/get/${name}/`)
         .then((response) =>{
-            console.log(response.data);
             setLater(response.data)
         })
         .catch(()=>setLater([]))

@@ -8,7 +8,7 @@ export default function Webexplore() {
     const [catagories, setcatagories] = useState([])
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/backendcatagories/')
+        axios.get('backendcatagories/')
         .then((response)=>{
             setcatagories(response.data)
         })

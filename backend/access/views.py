@@ -79,6 +79,7 @@ class state(APIView):
 
             if group.name == 'admins':
                 data = {
+                    'id':f'{user.id}',
                     'username':f'{user.first_name} {user.last_name}',
                     'isLogin':True,
                     'hasNotification':False,
@@ -89,6 +90,7 @@ class state(APIView):
 
             elif group.name == 'creators':
                 data = {
+                    'id':f'{user.id}',
                     'username':f'{user.first_name} {user.last_name}',
                     'isLogin':True,
                     'hasNotification':False,
@@ -99,6 +101,7 @@ class state(APIView):
 
             else:
                 data = {
+                    'id':f'{user.id}',
                     'username':f'{user.first_name} {user.last_name}',
                     'isLogin':True,
                     'hasNotification':False,
